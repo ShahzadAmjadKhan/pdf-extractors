@@ -1,4 +1,4 @@
-# ISOBIC
+# Roman Census
 - Extract information about the Roman households and persons available from PDFs [catalogue-of-census-declarations.pdf](input_pdf/catalogue-of-census-declarations.pdf) and [catalogue-of-census-declarations-supplement.pdf](input_pdf/catalogue-of-census-declarations-supplement.pdf)
 - Stores information for households and persons in separate CSVs
 
