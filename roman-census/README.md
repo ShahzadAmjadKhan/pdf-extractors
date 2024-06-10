@@ -1,0 +1,52 @@
+# ISOBIC
+- Extract information about the Roman households and persons available from PDFs [catalogue-of-census-declarations.pdf](input_pdf/catalogue-of-census-declarations.pdf) and [catalogue-of-census-declarations-supplement.pdf](input_pdf/catalogue-of-census-declarations-supplement.pdf)
+- Stores information for households and persons in separate CSVs
+
+# Solution
+- Extract text from PDF using PyMuPDF
+- Each page text is parsed to identify the required data for household CSV
+  - household_number_year,
+  - household_number_location,
+  - household_number_order,
+  - source,provenance,
+  - provenance_place,
+  - provenance_year,
+  - declarant_name_1,
+  - declarant_name_2,
+  - declarant_name_3,
+  - declarant_name_4,
+  - declarant_name_5,
+  - declarant_ids,
+  - declarant_occupation,
+  - number_of_family_members,
+  - number_of_non_family_members,
+  - number_of_slaves,
+  - verif_photo,
+  - discussion_text,
+  - discussion_indicates_substantive_record_brokenness
+- Houshold data is also written in a different format in [input persons csv](input_csv\persons_input.csv)
+- [persons.py](persons.py) process the [input persons csv](input_csv\persons_input.csv) to determine the data for persons
+- It process family members, non-kin members and slaves. 
+- Relation between persons are also identified and related Ids are updated
+- Persons data is stored in CSV with below columns
+  - household_id,
+  - id,
+  - name,
+  - sex,
+  - age,
+  - occupation,
+  - father,
+  - mother,
+  - paternal_grandfather,
+  - maternal_grandfather,
+  - spouse,
+  - siblings,
+  - children,
+  - relation_to_declarant,
+  - role,
+  - owner
+
+# Language & Tools
+- Python
+- PyMuPDF (Fitz)
+- Pandas
