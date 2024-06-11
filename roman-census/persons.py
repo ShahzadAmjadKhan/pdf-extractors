@@ -110,7 +110,7 @@ def get_age(data):
     if data.__contains__('age not given'):
         age = 'age not given'
 
-    if age is None:
+    if age is None or len(age) == 0:
         probably_age_pattern = r"(\(probably\s+.*)|(probably\s+.*)|\?.*probable.*"
         age_pattern = r"(?<=;\s|,\s)([\[\.\]]*\d+.*)"
         age_search = re.findall(age_pattern, data, re.IGNORECASE)
@@ -771,7 +771,7 @@ def start():
 
     household_id = ''
     try:
-        df = pd.read_csv('output_csv_1.csv', encoding="utf-8")
+        df = pd.read_csv('.\input_csv\persons_input.csv', encoding="utf-8")
         persons = []
         df['name_of_family_members'] = df['name_of_family_members'].apply(ast.literal_eval)
         df['name_of_non_family_members'] = df['name_of_non_family_members'].apply(ast.literal_eval)
