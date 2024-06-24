@@ -1,7 +1,7 @@
 # FFIEC Census Reports 
 - This generic script extracts information from all 2023 FFIEC Census Report - Summary Census Demographic Information reports. Reports in PDF format can be accessed from url https://www.ffiec.gov/census/Default.aspx. 
-- Sample PDF is available at [MSA_MD- 11244 - ANAHEIM-SANTA ANA-IRVINE, CA.pdf](input_pdf/MSA_MD- 11244 - ANAHEIM-SANTA ANA-IRVINE, CA.pdf)
-- output csv is also available
+- Sample PDF "MSA_MD- 11244 - ANAHEIM-SANTA ANA-IRVINE, CA.pdf" is available in input_pdf folder
+- output csv (output_table_us-ffiec-demographic-Info.csv) is also available
 
 # Solution
 - Extract table headings with coordinates from PDF using PyMuPDF
