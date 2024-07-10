@@ -1,0 +1,232 @@
+,Date,Payee / Payer,Type,Reference,Description,Income,Expense,Balance
+0,,,,,Beginning Cash Balance as of 01/01/2022,,,0.00
+1,01/20/2023,Drew A. Siegel,Receipt,,"Ansley's Way 1323 Unit B - Mgmt Held Security
+Deposits - Move In Charge: Mgmt Held Security
+Deposits","1,500.00",,"1,500.00"
+2,01/20/2023,Drew A. Siegel,Receipt,,"Ansley's Way 1323 Unit B - Redecoration Fee - Move
+In Charge: Redecoration Fee","1,500.00",,"3,000.00"
+3,01/23/2023,,JE,377,Nicholas Debs Unit A Security Deposit,,"1,500.00","1,500.00"
+4,01/23/2023,Javier A. Ramos,Receipt,,"Ansley's Way 1323 Unit A - Mgmt Held Security
+Deposits - Move In Charge: Mgmt Held Security
+Deposits","1,500.00",,"3,000.00"
+5,01/23/2023,Javier A. Ramos,Receipt,,"Ansley's Way 1323 Unit A - Redecoration Fee - Move
+In Charge: Redecoration Fee","1,500.00",,"4,500.00"
+6,01/31/2023,,JE,376,Sigel Unit B Security Deposit,,"1,500.00","3,000.00"
+7,02/14/2023,"C & C Properties
+and Investments
+LLC",Check,1123,Owner Distribution - Owner payment for 02/2023,,"3,000.00",0.00
+8,08/06/2023,Javier A. Ramos,Receipt,,Ansley's Way 1323 Unit A - Rent Income,825.00,,825.00
+9,08/06/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,800.00,,"1,625.00"
+10,08/06/2023,Javier A. Ramos,Receipt,,Ansley's Way 1323 Unit A - Rent Income,850.00,,"2,475.00"
+11,08/06/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,400.00,,"2,875.00"
+12,08/06/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,400.00,,"3,275.00"
+13,08/06/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,800.00,,"4,075.00"
+14,08/06/2023,Javier A. Ramos,Receipt,,Ansley's Way 1323 Unit A - Rent Income,850.00,,"4,925.00"
+15,08/06/2023,Javier A. Ramos,Receipt,,Ansley's Way 1323 Unit A - Rent Income,850.00,,"5,775.00"
+16,08/07/2023,Stefano D. Molaro,"CC
+receipt",5474-6980,"Ansley's Way 1323 Unit B - Rent Income - Move In
+Charge: Rent Income",850.00,,"6,625.00"
+17,08/07/2023,Drew A. Siegel,"eCheck
+receipt",1A7D-0C80,"Ansley's Way 1323 Unit B - Rent Income - Move In
+Charge: Rent Income",750.00,,"7,375.00"
+18,08/08/2023,Samuel J. Goode,"CC
+receipt",69C5-FC00,"Ansley's Way 1323 Unit A - Rent Income - Move In
+Charge: Rent Income",625.00,,"8,000.00"
+19,08/08/2023,Samuel J. Goode,"CC
+receipt",69C5-FC00,"Ansley's Way 1323 Unit A - Parking Income - August
+2023 - Parking- 4 premium, 1 standard",225.00,,"8,225.00"
+20,08/09/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Parking Income,250.00,,"8,475.00"
+21,08/11/2023,KNR Property,eCheck,5F7B-43AE,Management Fees - Management Fees for 08/2023,,640.00,"7,835.00"
+22,,Management,,,,,,
+23,08/11/2023,"C & C Properties
+and Investments
+LLC",Check,1188,Owner Distribution - Owner payment for 08/2023,,"7,585.00",250.00
+24,08/23/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Utility Income,101.74,,351.74
+25,09/01/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,398.26,,750.00
+26,09/01/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,800.00,,"1,550.00"
+27,09/01/2023,Nicholas A. Debs,"eCheck
+receipt",519C-9C10,"Ansley's Way 1323 Unit A - Rent Income - September
+2023",850.00,,"2,400.00"
+28,09/01/2023,Javier A. Ramos,"eCheck
+receipt",C4D1-13E0,"Ansley's Way 1323 Unit A - Rent Income - September
+2023",850.00,,"3,250.00"
+29,09/01/2023,Kimberly L. Holmes,"CC
+receipt",DB98-9470,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",850.00,,"4,100.00"
+30,09/03/2023,Tyler D. Bohne,"CC
+receipt",1F57-E8E0,"Ansley's Way 1323 Unit A - Rent Income - September
+2023",850.00,,"4,950.00"
+31,09/03/2023,Broc A. Bohne,"CC
+receipt",1FEF-7990,"Ansley's Way 1323 Unit A - Rent Income - September
+2023",850.00,,"5,800.00"
+32,09/04/2023,"Danielle J.
+Goodman","CC
+receipt",1F62-3BE0,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",400.00,,"6,200.00"
+33,09/04/2023,"Danielle J.
+Goodman","eCheck
+receipt",B0CE-2450,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",400.00,,"6,600.00"
+34,09/05/2023,Stefano D. Molaro,"CC
+receipt",C5D6-72C0,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",850.00,,"7,450.00"
+35,09/05/2023,Kimberly L. Holmes,"CC
+receipt",1131-CBB0,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",50.00,,"7,500.00"
+36,09/09/2023,Drew A. Siegel,"eCheck
+receipt",3DF0-C5A0,"Ansley's Way 1323 Unit B - Rent Income - September
+2023",251.74,,"7,751.74"
+37,09/09/2023,Drew A. Siegel,"eCheck
+receipt",3DF0-C5A0,"Ansley's Way 1323 Unit B - Parking Income -
+September 2023 - 3 premium parking spots",150.00,,"7,901.74"
+38,09/09/2023,Samuel J. Goode,"CC
+receipt","5DED-
+EC30","Ansley's Way 1323 Unit A - Rent Income - September
+2023",600.00,,"8,501.74"
+39,09/09/2023,Samuel J. Goode,"CC
+receipt","5DED-
+EC30","Ansley's Way 1323 Unit A - Parking Income -
+September 2023 - Parking- 5 premium",250.00,,"8,751.74"
+40,09/12/2023,"KNR Property
+Management",eCheck,9058-5786,Management Fees - Management Fees for 09/2023,,640.00,"8,111.74"
+41,09/15/2023,"C & C Properties
+and Investments
+LLC",Check,1222,Owner Distribution - Owner payment for 09/2023,,"8,111.74",0.00
+42,10/01/2023,Javier A. Ramos,Receipt,,Ansley's Way 1323 Unit A - Rent Income,850.00,,850.00
+43,10/01/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,358.26,,"1,208.26"
+44,10/01/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Rent Income,"3,641.74",,"4,850.00"
+45,10/01/2023,Drew A. Siegel,Receipt,,Ansley's Way 1323 Unit B - Parking Income,150.00,,"5,000.00"
+46,10/03/2023,Tyler D. Bohne,"CC
+receipt",E05F-8F10,"Ansley's Way 1323 Unit A - Rent Income - October
+2023",850.00,,"5,850.00"
+47,10/03/2023,Broc A. Bohne,"CC
+receipt",E100-7BE0,"Ansley's Way 1323 Unit A - Rent Income - October
+2023",850.00,,"6,700.00"
+48,,,,,Ending Cash Balance,,,"6,700.00"
+49,Total,,,,,"29,676.74","22,976.74",
+50,,,,,Beginning Cash Balance as of 01/01/2022,,,0.00
+51,12/12/2022,Andrew C. Peterson,Receipt,,"Ansley's Way 1326 Unit B - Mgmt Held Security
+Deposits - Move In Charge: Mgmt Held Security
+Deposits","1,000.00",,"1,000.00"
+52,12/12/2022,Andrew C. Peterson,Receipt,,"Ansley's Way 1326 Unit B - Redecoration Fee -
+Move In Charge: Redecoration Fee","1,000.00",,"2,000.00"
+53,12/15/2022,,JE,342,Peterson SD Transfer,,"1,000.00","1,000.00"
+54,01/09/2023,,"Bank
+Transfer",,"Graham O. Benjamin, Andrew C. Peterson, Kyle H.
+Levine, Bilal A. Andha, Ansley's Way 1326 -
+Ansley's Way 1326 Unit B : Security Deposit
+Transfer","1,000.00",,"2,000.00"
+55,01/09/2023,"Graham O.
+Benjamin & Andrew
+C. Peterson & Kyle
+H. Levine & Bilal A.
+Andha",Check,1110,"Ansley's Way 1326 Unit B - Clearing Account -
+Graham O. Benjamin, Andrew C. Peterson, Kyle H.
+Levine, Bilal A. Andha, Ansley's Way 1326 -
+Ansley's Way 1326 Unit B : Move Out Refund",,"1,000.00","1,000.00"
+56,01/17/2023,"C & C Properties
+and Investments
+LLC",Check,1116,Owner Distribution - Owner payment for 01/2023,,"1,000.00",0.00
+57,03/24/2023,Sean J. O'Keeffe,Receipt,,"Ansley's Way 1326- Unit A - Mgmt Held Security
+Deposits - Move In Charge: Mgmt Held Security
+Deposits","1,500.00",,"1,500.00"
+58,03/24/2023,Sean J. O'Keeffe,Receipt,,"Ansley's Way 1326- Unit A - Redecoration Fee -
+Move In Charge: Redecoration Fee","1,500.00",,"3,000.00"
+59,03/31/2023,,JE,401,Sean O' Keffee Security Deposit,,"1,500.00","1,500.00"
+60,04/12/2023,"C & C Properties
+and Investments
+LLC",Check,1139,Owner Distribution - Owner payment for 04/2023,,"1,500.00",0.00
+61,07/21/2023,Emily McCauslin,"eCheck
+receipt",EF9E-4710,"Ansley's Way 1326 Unit B - Rent Income - Prorated
+rent for July 24-July 30","1,032.36",,"1,032.36"
+62,08/04/2023,Andrew D. Owens,"eCheck
+receipt",384C-6C50,"Ansley's Way 1326- Unit A - Rent Income - Move In
+Charge: Rent Income",850.00,,"1,882.36"
+63,08/05/2023,connor M. pitisci,"eCheck
+receipt",FED6-19F0,"Ansley's Way 1326- Unit A - Rent Income - Move In
+Charge: Rent Income",850.00,,"2,732.36"
+64,08/05/2023,Sean J. O'Keeffe,"CC
+receipt",4734-35F0,"Ansley's Way 1326- Unit A - Rent Income - Move In
+Charge: Rent Income",625.00,,"3,357.36"
+65,08/05/2023,Sean J. O'Keeffe,"CC
+receipt",4734-35F0,"Ansley's Way 1326- Unit A - Parking Income -
+August 2023",175.00,,"3,532.36"
+66,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"4,382.36"
+67,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,800.00,,"5,182.36"
+68,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"6,032.36"
+69,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"6,882.36"
+70,08/07/2023,Sean J. O'Keeffe,Receipt,,Ansley's Way 1326- Unit A - Rent Income,825.00,,"7,707.36"
+71,08/07/2023,Sean J. O'Keeffe,Receipt,,Ansley's Way 1326- Unit A - Rent Income,850.00,,"8,557.36"
+72,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,650.00,,"9,207.36"
+73,08/07/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Parking Income,200.00,,"9,407.36"
+74,08/08/2023,Elena Caldwell,Receipt,5794,"Ansley's Way 1326 Unit B - Mgmt Held Security
+Deposits - Move In Charge: Mgmt Held Security
+Deposits","1,200.00",,"10,607.36"
+75,08/08/2023,,JE,459,1326 Unit B Security Deposit,,"1,200.00","9,407.36"
+76,08/11/2023,"KNR Property
+Management",eCheck,5F7B-43AE,Management Fees - Management Fees for 07/2023,,82.59,"9,324.77"
+77,08/11/2023,"KNR Property
+Management",eCheck,5F7B-43AE,Management Fees - Management Fees for 08/2023,,640.00,"8,684.77"
+78,08/11/2023,"C & C Properties
+and Investments
+LLC",Check,1188,Owner Distribution - Owner payment for 08/2023,,"8,684.77",0.00
+79,09/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,915.00,,915.00
+80,09/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,800.00,,"1,715.00"
+81,09/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"2,565.00"
+82,09/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"3,415.00"
+83,09/01/2023,Sean J. O'Keeffe,Receipt,,Ansley's Way 1326- Unit A - Rent Income,825.00,,"4,240.00"
+84,09/01/2023,Sean J. O'Keeffe,Receipt,,Ansley's Way 1326- Unit A - Rent Income,825.00,,"5,065.00"
+85,09/01/2023,Alyssa Arnold,"eCheck
+receipt",21FB-BA60,"Ansley's Way 1326 Unit B - Rent Income -
+September 2023",585.00,,"5,650.00"
+86,09/01/2023,Alyssa Arnold,"eCheck
+receipt",21FB-BA60,"Ansley's Way 1326 Unit B - Pet Rent Income -
+September 2023",65.00,,"5,715.00"
+87,09/01/2023,Alyssa Arnold,"eCheck
+receipt",21FB-BA60,"Ansley's Way 1326 Unit B - Parking Income -
+September 2023",200.00,,"5,915.00"
+88,09/01/2023,Sean J. O'Keeffe,"CC
+receipt",FA96-C390,"Ansley's Way 1326- Unit A - Rent Income -
+September 2023",825.00,,"6,740.00"
+89,09/05/2023,Andrew D. Owens,"eCheck
+receipt",8259-2B00,"Ansley's Way 1326- Unit A - Rent Income -
+September 2023",850.00,,"7,590.00"
+90,09/05/2023,connor M. pitisci,"eCheck
+receipt",26CB-4760,"Ansley's Way 1326- Unit A - Rent Income -
+September 2023",675.00,,"8,265.00"
+91,09/05/2023,connor M. pitisci,"eCheck
+receipt",26CB-4760,"Ansley's Way 1326- Unit A - Parking Income -
+September 2023",175.00,,"8,440.00"
+92,09/12/2023,"KNR Property
+Management",eCheck,9058-5786,Other Expenses - Turn Week - Turn Week,,980.00,"7,460.00"
+93,09/12/2023,"KNR Property
+Management",eCheck,9058-5786,Management Fees - Management Fees for 09/2023,,640.00,"6,820.00"
+94,09/20/2023,"C & C Properties
+and Investments
+LLC",Check,1229,Owner Distribution - Owner payment for 09/2023,,"6,820.00",0.00
+95,10/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,100.00,,100.00
+96,10/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,100.00,,200.00
+97,10/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"1,050.00"
+98,10/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,800.00,,"1,850.00"
+99,10/01/2023,Greta J. Nickerson,Receipt,,Ansley's Way 1326 Unit B - Rent Income,850.00,,"2,700.00"
+100,10/01/2023,Sean J. O'Keeffe,Receipt,,Ansley's Way 1326- Unit A - Rent Income,850.00,,"3,550.00"
+101,10/01/2023,Alyssa Arnold,"eCheck
+receipt",696B-59F0,"Ansley's Way 1326 Unit B - Rent Income - October
+2023",850.00,,"4,400.00"
+102,10/01/2023,Emily McCauslin,"eCheck
+receipt",35F1-F950,"Ansley's Way 1326 Unit B - Rent Income - October
+2023",450.00,,"4,850.00"
+103,10/01/2023,Emily McCauslin,"eCheck
+receipt",35F1-F950,"Ansley's Way 1326 Unit B - Pet Rent Income -
+October 2023",65.00,,"4,915.00"
+104,10/01/2023,Emily McCauslin,"eCheck
+receipt",35F1-F950,"Ansley's Way 1326 Unit B - Parking Income -
+October 2023",200.00,,"5,115.00"
+105,10/02/2023,connor M. pitisci,"eCheck
+receipt",DA52-44F0,"Ansley's Way 1326- Unit A - Rent Income - October
+2023",850.00,,"5,965.00"
+106,10/03/2023,Andrew D. Owens,"eCheck
+receipt",C9D9-1010,"Ansley's Way 1326- Unit A - Rent Income - October
+2023",850.00,,"6,815.00"
+107,,,,,Ending Cash Balance,,,"6,815.00"
+108,Total,,,,,"31,862.36","25,047.36",
