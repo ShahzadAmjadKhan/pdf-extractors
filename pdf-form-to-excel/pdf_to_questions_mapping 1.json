@@ -1,0 +1,126 @@
+{
+  "questions": [
+    {
+      "title": "Erstelle einen anonymen Code",
+      "answer_type": "Boolean",
+      "pdf_fields": [
+        {
+          "key": "Erledigt_Aufgabe_4",
+          "type": "checkbox"
+        }
+      ]
+    },
+    {
+      "title": "Wie lauten die ersten beiden Buchstaben des Vornamens deiner Mutter",
+      "answer_type": "Text",
+      "pdf_fields": [
+        {
+          "key": "Textfeld 5",
+          "type": "textbox"
+        }
+      ]
+    },
+    {
+      "title": "Wie lauten die ersten beiden Buchstaben deines Vornamens?",
+      "answer_type": "Text",
+      "pdf_fields": [
+        {
+          "key": "Textfeld 5_2",
+          "type": "textbox"
+        }
+      ]
+    },
+    {
+      "title": "Welches Geschlecht hast du? ",
+      "answer_type": "Select_One",
+      "pdf_fields": [
+        {
+          "key": "checkbox_pretest",
+          "type": "checkbox",
+          "sheet_value": "Weiblich"
+        },
+        {
+          "key": "checkbox_pretest_7",
+          "type": "checkbox",
+          "sheet_value": "Männlich"
+        },
+        {
+          "key": "checkbox_pretest_2",
+          "type": "checkbox",
+          "sheet_value": "Divers"
+        },
+        {
+          "key": "checkbox_pretest_8",
+          "type": "checkbox",
+          "sheet_value": "Keine Angabe"
+        }
+      ]
+    },
+    {
+      "title": "In welchem Land absolvierst du derzeit dein Lehramtsstudium?",
+      "answer_type": "Select_Multiple",
+      "pdf_fields": [
+        {
+          "key": "checkbox_pretest_3",
+          "type": "checkbox",
+          "sheet_value": "Österreich"
+        },
+        {
+          "key": "checkbox_pretest_5",
+          "type": "checkbox",
+          "sheet_value": "Deutschland"
+        },
+        {
+          "key": "checkbox_pretest_4",
+          "type": "checkbox",
+          "sheet_value": "Griechenland"
+        },
+        {
+          "key": "checkbox_pretest_6",
+          "type": "checkbox",
+          "sheet_value": "Spanien"
+        },
+        {
+          "key": "Textfeld 19",
+          "type": "textbox"
+        }
+      ]
+    },
+    {
+      "title": "Ich lese viel Forschungsliteratur in pädagogischen Fachzeitschriften",
+      "answer_type": "Select_One",
+      "pdf_fields": [
+        {
+          "key": "checkbox_pretest_26",
+          "type": "checkbox",
+          "sheet_value": "(1) Stimme überhaupt nicht zu"
+        },
+        {
+          "key": "checkbox_pretest_27",
+          "type": "checkbox",
+          "sheet_value": "(2) Stimme nicht zu"
+        },
+        {
+          "key": "checkbox_pretest_28",
+          "type": "checkbox",
+          "sheet_value": "(3) Stimme eher nicht zu"
+        },
+        {
+          "key": "checkbox_pretest_29",
+          "type": "checkbox",
+          "sheet_value": "(4) Stimme eher zu"
+        },
+        {
+          "key": "checkbox_pretest_30",
+          "type": "checkbox",
+          "sheet_value": "(5) Stimme zu"
+        },
+        {
+          "key": "checkbox_pretest_31",
+          "type": "checkbox",
+          "sheet_value": "(6) Stimme vollkommen zu"
+        }
+      ]
+    }
+  ]
+}
