@@ -20,3 +20,5 @@
 - tesseract
 - pytesseract
 - Pandas
+
+
