@@ -7,3 +7,4 @@ This repository contain pdf extractors developed to extract required data from d
 4. KNR Property Management - Owner's Statement [details](knr-property-mgmt/README.md)
 5. Mobil Oil [details](mobil-oil/README.md)
 6. Invoices - Nordic Logistics [details](nordic-logistics-invoice/README.md)
+7. Invoices - Mancini Beverage [details](mancini-beverage-invoice/README.md)
