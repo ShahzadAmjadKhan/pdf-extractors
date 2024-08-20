@@ -3,10 +3,12 @@
 - Provided PDF file cannot be directly read as it is made up of images. OCR is required to fetch data. As invoices concern tabular data, to preserve tabular data layout pytesseract and pdfplumber are used to complete it. 
 - Tesseract, Pytesseract, PDFPlumber libraries are used for OCR, image creation, table marking on images and text extraction
 - See below screenshot of invoice 
+![image](https://github.com/user-attachments/assets/fca72eee-f237-4b40-8cf6-77ffc77e83d5)
 
 
 - see below screenshot of extracted data
-  
+ ![image](https://github.com/user-attachments/assets/9c1c0a62-5544-4abd-8cc0-646f8d67954d)
+ 
 
 
 # Solution
@@ -25,5 +27,6 @@
 - pytesseract
 - pdfplumber
 - Pandas
+- pymupdf
 
 
