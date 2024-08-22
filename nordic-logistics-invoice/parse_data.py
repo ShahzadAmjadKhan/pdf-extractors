@@ -126,7 +126,7 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
             charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
             charge_type = charge_type_match.group(1) if charge_type_match else None
             if charge_type.__contains__("USD"):
-                charge_type = charge_type.rstrip("USD").strip(' ')
+                charge_type = charge_type.split(" ")[0]
                 unit_price_match = re.search(r"\s(\d+)\s", line)
                 unit_price = unit_price_match.group(1) if unit_price_match else 0.0
                 unit_price = float(unit_price)
