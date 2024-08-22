@@ -69,8 +69,9 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['NetValue'] = float(net_value_match.group(1).replace(" ", "").replace(",", ".")) if net_value_match else None
 
     # Extract VAT (with * after currency)
-    vat_match = re.search(r"([\d\s,]+) \w{3} \*", block, re.MULTILINE | re.IGNORECASE)
-    order_data['VAT'] = float(vat_match.group(1).replace(" ", "").replace(",", ".")) * vat if vat_match else 0.0
+    vat_matches = re.findall(r"([\d\s,]+) \w{3} \*", block, re.MULTILINE | re.IGNORECASE)
+    total_vat = sum(float(vat.replace(" ", "").replace(",", ".")) for vat in vat_matches)
+    order_data['VAT'] = total_vat * vat
 
     # Extract Total
     if order_data['NetValue'] is not None and order_data['VAT'] is not None:
@@ -124,12 +125,18 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
         if line.startswith(tuple(charge_types)):
             charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
             charge_type = charge_type_match.group(1) if charge_type_match else None
-            if charge_type.endswith("USD"):
+            if charge_type.__contains__("USD"):
                 charge_type = charge_type.rstrip("USD").strip(' ')
-                unit_price = get_token_from_end(line, -5)
+                unit_price_match = re.search(r"\s(\d+)\s", line)
+                unit_price = unit_price_match.group(1) if unit_price_match else 0.0
+                unit_price = float(unit_price)
                 currency = 'USD'
-                exchange_rate = get_token_from_end(line, -4)
-                total = get_token_from_end(line, -2)
+                exchange_rate_match = re.search(r"\b(\d+\s*,\d+)", line)
+                exchange_rate = exchange_rate_match.group(1) if exchange_rate_match else "0.0"
+                exchange_rate = float(exchange_rate.replace(' ', '').replace(',', '.'))
+                total_match = re.search(r"\s\d+\s\d+,\d+\s\w{3}\s(\d+\s*\d+,\d+)", line)
+                total = total_match.group(1) if total_match else "0.0"
+                total = float(total.replace(' ', '').replace(',', '.'))
             else:
                 unit_price = extract_and_convert_prices(line)
                 currency_match = re.search(r"\d{1,3}(?: \d{3})*,\d{2}\s+(\w{3})", line)
@@ -154,6 +161,7 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
 
     return charges
 
+
 def extract_and_convert_prices(text):
     # Regex pattern to match numbers with optional space and comma
     pattern = r'^.*?(?=\s+\d)(.*)\w{3}'
@@ -166,42 +174,6 @@ def extract_and_convert_prices(text):
     converted_prices = float(price.replace(' ', '').replace(',', '.'))
 
     return converted_prices
-
-def split_and_join_numbers(line):
-    # Split the line by spaces
-    tokens = line.split()
-
-    # List to hold the final tokens
-    final_tokens = []
-
-    i = 0
-    while i < len(tokens):
-        token = tokens[i]
-
-        # Check if the token is a number (integer or float with optional comma)
-        if re.match(r'^\d+(?:,\d{2})?$', token):
-            # Check if the next token is also a number (part of the same value)
-            if i + 1 < len(tokens) and re.match(r'^\d+(?:,\d{2})?$', tokens[i + 1]):
-                # Join the current and next tokens to form the complete number
-                token += tokens[i + 1]
-                i += 1  # Skip the next token since it's been joined
-
-        final_tokens.append(token)
-        i += 1
-
-    return final_tokens
-
-def get_token_from_end(line, number):
-    # Use split_and_join_numbers to process the line
-    tokens = split_and_join_numbers(line)
-
-    # Check if there are at least 5 tokens
-    if len(tokens) >= number*-1:
-        # Get the token from the end
-        price = tokens[number]
-        return float(price.replace(' ', '').replace(',', '.'))
-    else:
-        return None  # Return None if there are not enough tokens
 
 
 def get_vat(text):
