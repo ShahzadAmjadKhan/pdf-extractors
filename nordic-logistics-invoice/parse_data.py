@@ -2,7 +2,7 @@ import re
 import json
 
 # Function to parse individual order blocks
-def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index):
+def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat):
     order_data = {}
 
     # Assign the invoice number with order index
@@ -70,7 +70,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
 
     # Extract VAT (with * after currency)
     vat_match = re.search(r"([\d\s,]+) \w{3} \*", block, re.MULTILINE | re.IGNORECASE)
-    order_data['VAT'] = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+    order_data['VAT'] = float(vat_match.group(1).replace(" ", "").replace(",", ".")) * vat if vat_match else 0.0
 
     # Extract Total
     if order_data['NetValue'] is not None and order_data['VAT'] is not None:
@@ -109,7 +109,7 @@ def parse_order_block_for_container(block, invoice_base_no, order_index):
     return container_data
 
 
-def parse_order_block_for_charges(block, invoice_base_no, order_index):
+def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_percentage):
 
     charge_types = ["Vareavgift", "BL dokumentasjon", "Fortolling", "THC", "SECA", "Seafreight", "Consolidation fee", "Port dues", "Rail"]
     charges = []
@@ -125,19 +125,97 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index):
             charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
             charge_type = charge_type_match.group(1) if charge_type_match else None
             if charge_type.endswith("USD"):
-                charge_type = charge_type.rstrip("USD")
+                charge_type = charge_type.rstrip("USD").strip(' ')
+                unit_price = get_token_from_end(line, -5)
+                currency = 'USD'
+                exchange_rate = get_token_from_end(line, -4)
+                total = get_token_from_end(line, -2)
+            else:
+                unit_price = extract_and_convert_prices(line)
+                currency_match = re.search(r"\d{1,3}(?: \d{3})*,\d{2}\s+(\w{3})", line)
+                currency = currency_match.group(1) if currency_match else None
+                exchange_rate = 1.0000
+                total = unit_price
 
-            charge_data['Charge Type'] = charge_type
+            vat_match = re.search(r"([\d\s,]+) \w{3} \*", line)
+            vat = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+
+            charge_data['Charge Type'] = charge_type.strip(' ')
+            charge_data['Unit Price'] = unit_price
+            charge_data['Currency'] = currency
+            charge_data['Exchange Rate'] = exchange_rate
+            charge_data['Total'] = total
+            charge_data['Currency Total'] = 'NOK'
+            charge_data['VAT'] = vat * vat_percentage
+            if vat > 0.0:
+                charge_data['VAT Percentage'] = str(vat_percentage * 100) + '%'
             charges.append(charge_data)
             charge_data = {}
 
     return charges
+
+def extract_and_convert_prices(text):
+    # Regex pattern to match numbers with optional space and comma
+    pattern = r'^.*?(?=\s+\d)(.*)\w{3}'
+
+    # Find all matches in the text
+    match = re.search(pattern, text)
+    price = match.group(1)
+
+    # Convert matched prices to float
+    converted_prices = float(price.replace(' ', '').replace(',', '.'))
+
+    return converted_prices
+
+def split_and_join_numbers(line):
+    # Split the line by spaces
+    tokens = line.split()
+
+    # List to hold the final tokens
+    final_tokens = []
+
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+
+        # Check if the token is a number (integer or float with optional comma)
+        if re.match(r'^\d+(?:,\d{2})?$', token):
+            # Check if the next token is also a number (part of the same value)
+            if i + 1 < len(tokens) and re.match(r'^\d+(?:,\d{2})?$', tokens[i + 1]):
+                # Join the current and next tokens to form the complete number
+                token += tokens[i + 1]
+                i += 1  # Skip the next token since it's been joined
+
+        final_tokens.append(token)
+        i += 1
+
+    return final_tokens
+
+def get_token_from_end(line, number):
+    # Use split_and_join_numbers to process the line
+    tokens = split_and_join_numbers(line)
+
+    # Check if there are at least 5 tokens
+    if len(tokens) >= number*-1:
+        # Get the token from the end
+        price = tokens[number]
+        return float(price.replace(' ', '').replace(',', '.'))
+    else:
+        return None  # Return None if there are not enough tokens
+
+
+def get_vat(text):
+    vat_match = re.search(r"(\d+,\d+) % VAT", text, re.MULTILINE | re.IGNORECASE)
+    vat = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+    vat = vat / 100
+    return vat
 
 # Function to parse the invoice data
 def parse_invoice_data(text):
     invoices = []
     containers = []
     charges = []
+    vat = get_vat(text)
 
     # Split the text into invoice blocks using the "Invoice \d+ from dd.dd.dddd" pattern
     invoice_blocks = re.split(r"Invoice (\d+) from \d{2}\.\d{2}\.\d{4}", text, re.IGNORECASE)
@@ -150,13 +228,13 @@ def parse_invoice_data(text):
         order_blocks = re.split(r"Order No\.:", invoice_content)
 
         for order_index, order_block in enumerate(order_blocks[1:], 1):
-            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index)
+            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index, vat)
             invoices.append(invoice_data)
 
             container_data = parse_order_block_for_container(order_block, invoice_base_no, order_index)
             containers.append(container_data)
 
-            charge_data = parse_order_block_for_charges(order_block, invoice_base_no, order_index)
+            charge_data = parse_order_block_for_charges(order_block, invoice_base_no, order_index, vat)
             charges.extend(charge_data)
 
     output_data = {
