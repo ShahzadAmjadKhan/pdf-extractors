@@ -145,16 +145,17 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
                 total = unit_price
 
             vat_match = re.search(r"([\d\s,]+) \w{3} \*", line)
-            vat = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+            vat_amount = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+            final_vat = vat_amount * vat_percentage
 
             charge_data['Charge Type'] = charge_type.strip(' ')
             charge_data['Unit Price'] = unit_price
             charge_data['Currency'] = currency
             charge_data['Exchange Rate'] = exchange_rate
-            charge_data['Total'] = total
+            charge_data['Total'] = total + final_vat
             charge_data['Currency Total'] = 'NOK'
-            charge_data['VAT'] = vat * vat_percentage
-            if vat > 0.0:
+            charge_data['VAT'] = final_vat
+            if vat_amount > 0.0:
                 charge_data['VAT Percentage'] = str(vat_percentage * 100) + '%'
             charges.append(charge_data)
             charge_data = {}
