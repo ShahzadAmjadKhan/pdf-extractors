@@ -1,9 +1,9 @@
 import re
 import json
-import io
+import base64
 
 # Function to parse individual order blocks
-def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, input_stream):
+def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, base64_string):
     order_data = {}
 
     # Assign the invoice number with order index
@@ -52,7 +52,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", block, re.MULTILINE | re.IGNORECASE)
     eta = eta_match.group(1) if eta_match else None
     if eta is None:
-        eta = get_loading_date(input_stream, reference_no)
+        eta = get_loading_date(base64_string, reference_no)
     order_data['ETA'] = eta
 
     # Extract ETD
@@ -104,8 +104,8 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     return order_data
 
 
-def get_loading_date(input_stream, order_no):
-    eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", input_stream.readline(), re.IGNORECASE)
+def get_loading_date(base64_string, order_no):
+    eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})",base64.b64decode(base64_string.encode('utf-8')).decode('utf-8') , re.IGNORECASE)
     eta = eta_match.group(1) if eta_match else None
     return eta
 
@@ -196,7 +196,7 @@ def get_vat(text):
     return vat
 
 # Function to parse the invoice data
-def parse_invoice_data(text, input_stream):
+def parse_invoice_data(text, base64_string):
     invoices = []
     containers = []
     charges = []
@@ -213,7 +213,7 @@ def parse_invoice_data(text, input_stream):
         order_blocks = re.split(r"Order No\.:", invoice_content)
 
         for order_index, order_block in enumerate(order_blocks[1:], 1):
-            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index, vat, input_stream)
+            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index, vat, base64_string)
             invoices.append(invoice_data)
 
             container_data = parse_order_block_for_container(order_block, invoice_base_no, order_index)
@@ -234,11 +234,10 @@ def parse_invoice_data(text, input_stream):
 with open('./input_pdf/pdfplumper_input.txt', 'r') as file:
     input_text = file.read()
 
-text = 'Loading date 01.03.2024'
-input_stream = io.StringIO(text)
+base64_string = base64.b64encode('Loading date 01.03.2024'.encode('utf-8')).decode('utf-8')
 
 # Parse the invoice data
-data = parse_invoice_data(input_text, input_stream)
+data = parse_invoice_data(input_text, base64_string)
 
 # Write the output JSON to a file
 with open('./output/output.json', 'w') as json_file:
