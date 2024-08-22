@@ -1,0 +1,101 @@
+NILLE AS Customer number: 1415
+Trollåsveien 4 Your VAT ID no.: NO918468919
+1414 Kolbotn Trollåsen Email: customerservice@collicare.no
+NORWAY Page: 1 / 3
+Invoice date: 31.05.2024
+Due date: 30.07.2024
+Invoice 3118833 from 31.05.2024
+Order No.: 1564627 Invoice reference: KO2301680 Tour No.: 667693
+Consignment: 1564627.1 Incoterms: FOB Shipment mode: DEEPSEA
+Sender: ANHUI GARMENTS IMP&EXP CO.,LTDCN HEFEI Loading date 27.03.2024
+Receiver: NILLE AS N 1540 Vestby Delivery date 28.05.2024
+Vessel name: EVER ACT - 1289-010W Container type: 40HC Port of loading: CNSGH
+Container no.: EMCU1565734 Port of delivery: NOMSS
+Quantity Package Content A-weight F-weight Loading meter STP Volume
+536 Cartons 2090,4 2090,4 0,00 0 67,920
+2090,4 2090,4 0,00 0 67,920
+Seafreight USD / PCD 20.03 / 3650 11,1432 NOK 40 672,68 NOK
+67,92cbm
+SECA USD 54 11,1432 NOK 601,73 NOK
+THC 1 200,00 NOK
+Port dues 600,00 NOK
+BL dokumentasjon 575,00 NOK
+Fortolling 365,00 NOK *
+Total amount without VAT 44 014,41 NOK
+Order No.: 1564628 Invoice reference: KO2301680 Tour No.: 667693
+Consignment: 1564628.1 Incoterms: FOB Shipment mode: DEEPSEA
+Sender: ANHUI GARMENTS IMP&EXP CO.,LTDCN HEFEI Loading date 27.03.2024
+Receiver: NILLE AS N 1540 Vestby Delivery date 28.05.2024
+Vessel name: EVER ACT - 1289-010W Container type: 40HC Port of loading: CNSGH
+Container no.: EGHU9285273 Port of delivery: NOMSS
+All of our invoices are followed up by Finexa. In the event of a late payment, the penalty will be a statutory regulated
+interest on delays, as well as reminder fees
+Customer number: 1415 Invoice number: 3118833 Page: 2 / 3 Date: 31.05.2024
+Quantity Package Content A-weight F-weight Loading meter STP Volume
+536 Cartons 2090,4 2090,4 0,00 0 67,920
+2090,4 2090,4 0,00 0 67,920
+Seafreight USD / PCD 20.03/ 3650 11,1432 NOK 40 672,68 NOK
+67,92cbm
+SECA USD 54 11,1432 NOK 601,73 NOK
+THC 1 200,00 NOK
+Port dues 600,00 NOK
+Total amount without VAT 43 074,41 NOK
+Order No.: 1564629 Invoice reference: KO2301680 Tour No.: 667693
+Consignment: 1564629.1 Incoterms: FOB Shipment mode: DEEPSEA
+Sender: ANHUI GARMENTS IMP&EXP CO.,LTDCN HEFEI Loading date 27.03.2024
+Receiver: NILLE AS N 1540 Vestby Delivery date 28.05.2024
+Vessel name: EVER ACT - 1289-010W Container type: 40HC Port of loading: CNSGH
+Container no.: EISU9370372 Port of delivery: NOMSS
+Quantity Package Content A-weight F-weight Loading meter STP Volume
+630 Cartons 4544,4 4544,4 0,00 0 64,440
+4544,4 4544,4 0,00 0 64,440
+Seafreight USD / PCD 20.03 / 3650 11,1432 NOK 40 672,68 NOK
+64,44cbm
+SECA USD 54 11,1432 NOK 601,73 NOK
+THC 1 200,00 NOK
+Port dues 600,00 NOK
+Total amount without VAT 43 074,41 NOK
+Order No.: 1619601 Invoice reference: KO2302135 Tour No.: 690507
+Consignment: 1619601.1 Incoterms: FOB Shipment mode: DEEPSEA
+Sender: BEIJING HOUSEWARES INDUSTRIES CLTND .BEIJING Loading date 27.03.2024
+Receiver: NILLE AS N 1540 Vestby Delivery date 28.05.2024
+Vessel name: EVER ACT - 1289-010W Container type: 20DC Port of loading: CNSGH
+Container no.: EITU0546119 Port of delivery: NOMSS
+Quantity Package Content A-weight F-weight Loading meter STP Volume
+649 Cartons 9332,7 9332,7 0,00 0 28,750
+9332,7 9332,7 0,00 0 28,750
+All of our invoices are followed up by Finexa. In the event of a late payment, the penalty will be a statutory regulated
+interest on delays, as well as reminder fees
+Customer number: 1415 Invoice number: 3118833 Page: 3 / 3 Date: 31.05.2024
+Seafreight USD / PCD 20.03 / 2350 11,1432 NOK 26 186,52 NOK
+28,75cbm
+SECA USD 27 11,1432 NOK 300,87 NOK
+THC 1 200,00 NOK
+Port dues 600,00 NOK
+Total amount without VAT 28 287,39 NOK
+Order No.: 1619602 Invoice reference: KO2302135 Tour No.: 690507
+Consignment: 1619602.1 Incoterms: FOB Shipment mode: DEEPSEA
+Sender: BEIJING HOUSEWARES INDUSTRIES CLTND .BEIJING Loading date 27.03.2024
+Receiver: NILLE AS N 1540 Vestby Delivery date 28.05.2024
+Vessel name: EVER ACT - 1289-010W Container type: 40HC Port of loading: CNSGH
+Container no.: EITU1721730 Port of delivery: NOMSS
+Quantity Package Content A-weight F-weight Loading meter STP Volume
+1 134 Cartons 11340,0 11340,0 0,00 0 64,700
+11340,0 11340,0 0,00 0 64,700
+Seafreight USD / PCD 20.03 / 3650 11,1432 NOK 40 672,68 NOK
+64,7cbm
+SECA USD 54 11,1432 NOK 601,73 NOK
+THC 1 200,00 NOK
+Port dues 600,00 NOK
+BL dokumentasjon 575,00 NOK
+Fortolling 365,00 NOK *
+Total amount without VAT 44 014,41 NOK
+Invoice VAT-exempt VAT basis * VAT % VAT type VAT amount Total amount
+201 735,03 NOK 201 735,03 NOK
+730,00 NOK 25,0 % VAT 182,50 NOK 912,50 NOK
+Amount 201 735,03 NOK 730,00 NOK 182,50 NOK 202 647,53 NOK
+Claims must be reported in writing within 8 days.
+All services rendered are subject to the General Conditions of the Nordic Association of Freight Forwarders, NSAB2015
+All of our invoices are followed up by Finexa. In the event of a late payment, the penalty will be a statutory regulated
+interest on delays, as well as reminder fees
+KID: 6000141531188331 Total: 202 647,53 NOK KONTONR:1503 04 04243

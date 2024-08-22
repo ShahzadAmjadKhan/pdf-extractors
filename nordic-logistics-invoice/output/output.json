@@ -1,0 +1,137 @@
+{
+  "RawInvoiceContainers": [
+    {
+      "Invoice": "3118833/1",
+      "Container ID": "EMCU1565734",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3118833/2",
+      "Container ID": "EGHU9285273",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3118833/3",
+      "Container ID": "EISU9370372",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3118833/4",
+      "Container ID": "EITU0546119",
+      "Type": "20DC"
+    },
+    {
+      "Invoice": "3118833/5",
+      "Container ID": "EITU1721730",
+      "Type": "40HC"
+    }
+  ],
+  "RawInvoices": [
+    {
+      "Invoice No": "3118833/1",
+      "Type": "Invoice",
+      "Invoice Date": "31.05.2024",
+      "Bill of Lading": "KO2301680",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "27.03.2024",
+      "ETD": "28.05.2024",
+      "Vessel/Voyage": "EVER ACT - 1289-010W",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 44014.41,
+      "VAT": 365.0,
+      "Total": 44379.41,
+      "Currency": "NOK",
+      "Reference No.": "1564627",
+      "Due Date": "30.07.2024",
+      "Tour Number": "667693"
+    },
+    {
+      "Invoice No": "3118833/2",
+      "Type": "Invoice",
+      "Invoice Date": "31.05.2024",
+      "Bill of Lading": "KO2301680",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "27.03.2024",
+      "ETD": "28.05.2024",
+      "Vessel/Voyage": "EVER ACT - 1289-010W",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 43074.41,
+      "VAT": 0.0,
+      "Total": 43074.41,
+      "Currency": "NOK",
+      "Reference No.": "1564628",
+      "Due Date": "30.07.2024",
+      "Tour Number": "667693"
+    },
+    {
+      "Invoice No": "3118833/3",
+      "Type": "Invoice",
+      "Invoice Date": "31.05.2024",
+      "Bill of Lading": "KO2301680",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "27.03.2024",
+      "ETD": "28.05.2024",
+      "Vessel/Voyage": "EVER ACT - 1289-010W",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 43074.41,
+      "VAT": 0.0,
+      "Total": 43074.41,
+      "Currency": "NOK",
+      "Reference No.": "1564629",
+      "Due Date": "30.07.2024",
+      "Tour Number": "667693"
+    },
+    {
+      "Invoice No": "3118833/4",
+      "Type": "Invoice",
+      "Invoice Date": "31.05.2024",
+      "Bill of Lading": "KO2302135",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "27.03.2024",
+      "ETD": "28.05.2024",
+      "Vessel/Voyage": "EVER ACT - 1289-010W",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 28287.39,
+      "VAT": 0.0,
+      "Total": 28287.39,
+      "Currency": "NOK",
+      "Reference No.": "1619601",
+      "Due Date": "30.07.2024",
+      "Tour Number": "690507"
+    },
+    {
+      "Invoice No": "3118833/5",
+      "Type": "Invoice",
+      "Invoice Date": "31.05.2024",
+      "Bill of Lading": "KO2302135",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "27.03.2024",
+      "ETD": "28.05.2024",
+      "Vessel/Voyage": "EVER ACT - 1289-010W",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 44014.41,
+      "VAT": 365.0,
+      "Total": 44379.41,
+      "Currency": "NOK",
+      "Reference No.": "1619602",
+      "Due Date": "30.07.2024",
+      "Tour Number": "690507"
+    }
+  ],
+  "RawInvoiceCharges": []
+}
