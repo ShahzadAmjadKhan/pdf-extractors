@@ -317,40 +317,228 @@
   ],
   "RawInvoiceCharges": [
     {
-      "Invoice": "3059685/1"
+      "Invoice": "3059685/1",
+      "Charge Type": "Seafreight "
     },
     {
-      "Invoice": "3059685/2"
+      "Invoice": "3059685/1",
+      "Charge Type": "SECA "
     },
     {
-      "Invoice": "3059685/3"
+      "Invoice": "3059685/1",
+      "Charge Type": "THC"
     },
     {
-      "Invoice": "3059685/4"
+      "Invoice": "3059685/1",
+      "Charge Type": "Vareavgift"
     },
     {
-      "Invoice": "3059685/5"
+      "Invoice": "3059685/1",
+      "Charge Type": "BL dokumentasjon"
     },
     {
-      "Invoice": "3059685/6"
+      "Invoice": "3059685/1",
+      "Charge Type": "Fortolling"
     },
     {
-      "Invoice": "3059685/7"
+      "Invoice": "3059685/2",
+      "Charge Type": "Seafreight "
     },
     {
-      "Invoice": "3059685/8"
+      "Invoice": "3059685/2",
+      "Charge Type": "SECA "
     },
     {
-      "Invoice": "3059685/9"
+      "Invoice": "3059685/2",
+      "Charge Type": "THC"
     },
     {
-      "Invoice": "3059685/10"
+      "Invoice": "3059685/2",
+      "Charge Type": "Vareavgift"
     },
     {
-      "Invoice": "3059685/11"
+      "Invoice": "3059685/2",
+      "Charge Type": "BL dokumentasjon"
     },
     {
-      "Invoice": "3059685/12"
+      "Invoice": "3059685/2",
+      "Charge Type": "Fortolling"
+    },
+    {
+      "Invoice": "3059685/3",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/3",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/3",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/3",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/4",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/4",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/4",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/4",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/5",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/5",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/5",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/5",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/6",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/6",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/6",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/6",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/7",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/7",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/7",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/7",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/8",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/8",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/8",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/8",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/9",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/9",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/9",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/9",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "BL dokumentasjon"
+    },
+    {
+      "Invoice": "3059685/10",
+      "Charge Type": "Fortolling"
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "Vareavgift"
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "BL dokumentasjon"
+    },
+    {
+      "Invoice": "3059685/11",
+      "Charge Type": "Fortolling"
+    },
+    {
+      "Invoice": "3059685/12",
+      "Charge Type": "Seafreight "
+    },
+    {
+      "Invoice": "3059685/12",
+      "Charge Type": "SECA "
+    },
+    {
+      "Invoice": "3059685/12",
+      "Charge Type": "THC"
+    },
+    {
+      "Invoice": "3059685/12",
+      "Charge Type": "Vareavgift"
     }
   ]
 }

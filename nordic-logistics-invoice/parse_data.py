@@ -110,11 +110,28 @@ def parse_order_block_for_container(block, invoice_base_no, order_index):
 
 
 def parse_order_block_for_charges(block, invoice_base_no, order_index):
+
+    charge_types = ["Vareavgift", "BL dokumentasjon", "Fortolling", "THC", "SECA", "Seafreight", "Consolidation fee", "Port dues", "Rail"]
+    charges = []
     charge_data = {}
 
-    charge_data['Invoice']= f"{invoice_base_no}/{order_index}"
+    charges_text_match = re.search(r"Volume(.*)Total amount without VAT", block, re.DOTALL|re.IGNORECASE)
+    charges_text = charges_text_match.group(1) if charges_text_match else None
+    charges_lines = charges_text.splitlines()
 
-    return charge_data
+    for line in charges_lines:
+        charge_data['Invoice']= f"{invoice_base_no}/{order_index}"
+        if line.startswith(tuple(charge_types)):
+            charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
+            charge_type = charge_type_match.group(1) if charge_type_match else None
+            if charge_type.endswith("USD"):
+                charge_type = charge_type.rstrip("USD")
+
+            charge_data['Charge Type'] = charge_type
+            charges.append(charge_data)
+            charge_data = {}
+
+    return charges
 
 # Function to parse the invoice data
 def parse_invoice_data(text):
@@ -140,7 +157,7 @@ def parse_invoice_data(text):
             containers.append(container_data)
 
             charge_data = parse_order_block_for_charges(order_block, invoice_base_no, order_index)
-            charges.append(charge_data)
+            charges.extend(charge_data)
 
     output_data = {
         "RawInvoiceContainers": containers,
