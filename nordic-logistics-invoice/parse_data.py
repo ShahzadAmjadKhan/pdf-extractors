@@ -17,7 +17,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
     # Extract Bill of Lading
-    bol_match = re.search(r"Invoice reference: ([\w,]+)|Ext. order no.: ([\w,]+)", block, re.MULTILINE | re.IGNORECASE)
+    bol_match = re.search(r"Invoice reference:\s([\w\s,-/]*)\sTour No.|Ext. order no.: ([\w\s,-/]*)\sTour No.", block, re.MULTILINE | re.IGNORECASE)
     if bol_match.group(1) is not None:
         order_data['Bill of Lading'] = bol_match.group(1)
     else:
@@ -133,12 +133,15 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
     charges_lines = charges_text.splitlines()
 
     for line in charges_lines:
-        charge_data['Invoice']= f"{invoice_base_no}/{order_index}"
+        charge_data['Invoice'] = f"{invoice_base_no}/{order_index}"
         if line.startswith(tuple(charge_types)):
-            charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
+            charge_type_match = re.match(r"^(.*?)(?=\s+\d)\s\d+\s", line)
             charge_type = charge_type_match.group(1) if charge_type_match else None
+            if charge_type is None:
+                charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
+                charge_type = charge_type_match.group(1) if charge_type_match else None
+
             if charge_type.__contains__("USD"):
-                charge_type = charge_type.split(" ")[0]
                 unit_price_match = re.search(r"\s(\d+)\s", line)
                 unit_price = unit_price_match.group(1) if unit_price_match else 0.0
                 unit_price = float(unit_price)
