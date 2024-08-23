@@ -26,13 +26,13 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
         bol_match = re.search(r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n", bol_line, re.MULTILINE | re.IGNORECASE)
 
     if bol_match.group(1) is not None:
-        order_data['Bill of Lading'] = bol_match.group(1).strip("\n")
+        order_data['Bill of Lading'] = bol_match.group(1).strip("\n").strip(" ")
     elif bol_match.group(2) is not None:
-        order_data['Bill of Lading'] = bol_match.group(2).strip("\n")
+        order_data['Bill of Lading'] = bol_match.group(2).strip("\n").strip(" ")
     elif bol_match.group(3) is not None:
-        order_data['Bill of Lading'] = bol_match.group(3).strip("\n")
+        order_data['Bill of Lading'] = bol_match.group(3).strip("\n").strip(" ")
     elif bol_match.group(4) is not None:
-        order_data['Bill of Lading'] = bol_match.group(4).strip("\n")
+        order_data['Bill of Lading'] = bol_match.group(4).strip("\n").strip(" ")
     else:
         order_data['Bill of Lading'] = ''
     # Use Customer and Customer Address from the invoice block
