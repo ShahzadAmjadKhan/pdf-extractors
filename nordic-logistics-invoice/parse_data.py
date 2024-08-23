@@ -6,6 +6,9 @@ import base64
 def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, base64_string):
     order_data = {}
 
+    reference_no_match = re.search(r"Order No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
+    reference_no = reference_no_match.group(1) if reference_no_match else None
+
     # Assign the invoice number with order index
     order_data['Invoice No'] = f"{invoice_base_no}/{order_index}"
 
@@ -17,12 +20,21 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
     # Extract Bill of Lading
-    bol_match = re.search(r"Invoice reference:\s([\w\s,-/]*)\sTour No.|Ext. order no.: ([\w\s,-/]*)\sTour No.", block, re.MULTILINE | re.IGNORECASE)
-    if bol_match.group(1) is not None:
-        order_data['Bill of Lading'] = bol_match.group(1)
-    else:
-        order_data['Bill of Lading'] = bol_match.group(2)
+    bol_match = re.search(r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n", block, re.MULTILINE | re.IGNORECASE)
+    if bol_match is None:
+        bol_line = get_bill_of_landing(base64_string, reference_no)
+        bol_match = re.search(r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n", bol_line, re.MULTILINE | re.IGNORECASE)
 
+    if bol_match.group(1) is not None:
+        order_data['Bill of Lading'] = bol_match.group(1).strip("\n")
+    elif bol_match.group(2) is not None:
+        order_data['Bill of Lading'] = bol_match.group(2).strip("\n")
+    elif bol_match.group(3) is not None:
+        order_data['Bill of Lading'] = bol_match.group(3).strip("\n")
+    elif bol_match.group(4) is not None:
+        order_data['Bill of Lading'] = bol_match.group(4).strip("\n")
+    else:
+        order_data['Bill of Lading'] = ''
     # Use Customer and Customer Address from the invoice block
     customer_match = re.search(r"^(.*?)\s+Customer number:", invoice_block, re.MULTILINE | re.IGNORECASE)
     customer = customer_match.group(1).strip() if customer_match else None
@@ -44,9 +56,6 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     # Extract Customer Number
     customer_number_match = re.search(r"Customer number: (\d+)", invoice_block, re.MULTILINE | re.IGNORECASE)
     order_data['Customer Number'] = customer_number_match.group(1) if customer_number_match else None
-
-    reference_no_match = re.search(r"Order No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
-    reference_no = reference_no_match.group(1) if reference_no_match else None
 
     # Extract ETA
     eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", block, re.MULTILINE | re.IGNORECASE)
@@ -99,10 +108,15 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
 
     # Extract Tour Number
     tour_no_match = re.search(r"Tour No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
+    if tour_no_match is None:
+        tour_no_match = re.search(r"Tour No.: (\d+)", bol_line, re.MULTILINE | re.IGNORECASE)
     order_data['Tour Number'] = tour_no_match.group(1) if tour_no_match else None
 
     return order_data
 
+
+def get_bill_of_landing(base64_string, order_no):
+    return "Order No.: 786308 Ext. order no.: KO2100653,KO2100612,KO2100474,KO2100652,KO2100252 Tour No.: 328641 Consignment: 786308.1 Ningbo Home-Dollar Imp. & Exp. NILLE AS CN NINGBO N 1540 Vestby Loading date 26.02.2022 Delivery date 08.04.2022 Incoterms: FOB Shipment Mode: DEEPSEA Sender: Receiver: Port of loading: Vessel Name: Port of delivery: - NOMSS CNNBG Container no.: EISU8491488 Container type: 40HC F-weight Quantity Content A-weight Loading meter Volume Package STP 8154,5 1 604 0,00 Carton 63,095 8154,5 0 8154,5 0,00 63,095 8154,5 0 16700 8,9363 NOK 149 236,21 NOK"
 
 def get_loading_date(base64_string, order_no):
     eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})",base64.b64decode(base64_string.encode('utf-8')).decode('utf-8') , re.IGNORECASE)
@@ -124,7 +138,6 @@ def parse_order_block_for_container(block, invoice_base_no, order_index):
 
 def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_percentage):
 
-    charge_types = ["Vareavgift", "BL dokumentasjon", "Fortolling", "THC", "SECA", "Seafreight", "Consolidation fee", "Port dues", "Rail"]
     charges = []
     charge_data = {}
 
@@ -132,14 +145,19 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
     charges_text = charges_text_match.group(1) if charges_text_match else None
     charges_lines = charges_text.splitlines()
 
-    for line in charges_lines:
+    for index, line in enumerate(charges_lines):
         charge_data['Invoice'] = f"{invoice_base_no}/{order_index}"
-        if line.startswith(tuple(charge_types)):
+        if line.endswith("NOK") or line.endswith("NOK *"):
             charge_type_match = re.match(r"^(.*?)(?=\s+\d)\s\d+\s", line)
             charge_type = charge_type_match.group(1) if charge_type_match else None
             if charge_type is None:
                 charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
+
+            if charge_type.__contains__("Seafreight"):
+                next_line = charges_lines[index+1]
+                if bool(re.match(r'^\d', next_line)):
+                    charge_type = charge_type + " " + next_line
 
             if charge_type.__contains__("USD"):
                 unit_price_match = re.search(r"\s(\d+)\s", line)
