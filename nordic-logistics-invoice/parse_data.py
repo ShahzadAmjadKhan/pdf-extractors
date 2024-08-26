@@ -1,6 +1,78 @@
+import azure.functions as func
+import pdfplumber
 import re
+import logging
 import json
 import base64
+import io
+import os
+
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
+
+@app.route(route="HttpExample")
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    try:
+        # Parse the JSON request body
+        req_body = req.get_json()
+    except ValueError:
+        return func.HttpResponse(
+            "Invalid JSON format",
+            status_code=400
+        )
+
+    # Retrieve the base64 encoded PDF data
+    base64_pdf = req_body.get('pdf_file')
+
+    if not base64_pdf:
+        return func.HttpResponse(
+            "No base64 encoded data found in 'pdf_file'",
+            status_code=400
+        )
+
+    try:
+        # Decode the base64 PDF data
+        pdf_data = base64.b64decode(base64_pdf)
+    except base64.binascii.Error:
+        return func.HttpResponse(
+            "Invalid base64 encoded data",
+            status_code=400
+        )
+
+    # Convert the decoded data to a BytesIO stream
+    input_stream = io.BytesIO(pdf_data)
+    output_data = "text here"
+    try:
+        output_data = parse_pdf_via_plumber(input_stream, pdf_data)
+
+    except Exception as e:
+        print(f"An error occurred while reading the PDF: {e}")
+        return func.HttpResponse(
+            "Error during PDF parsing",
+            status_code=400
+        )
+
+    # Convert the data to JSON format
+    json_data = json.dumps(output_data)
+
+    return func.HttpResponse(
+        json_data,
+        mimetype="application/json",
+        status_code=200
+    )
+
+def parse_pdf_via_plumber(input_stream, pdf_data_base64):
+
+    text = ""
+    with pdfplumber.open(input_stream) as pdf:
+        # Iterate through the pages and extract text
+        for page_number, page in enumerate(pdf.pages):
+            text += page.extract_text()
+    #print(text)
+    output_data = parse_invoice_data(text, pdf_data_base64)
+    return output_data
+
 
 # Function to parse individual order blocks
 def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, base64_string):
@@ -116,14 +188,6 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     return order_data
 
 
-def get_bill_of_landing(base64_string, order_no):
-    return "Order No.: 786308 Ext. order no.: KO2100653,KO2100612,KO2100474,KO2100652,KO2100252 Tour No.: 328641 Consignment: 786308.1 Ningbo Home-Dollar Imp. & Exp. NILLE AS CN NINGBO N 1540 Vestby Loading date 26.02.2022 Delivery date 08.04.2022 Incoterms: FOB Shipment Mode: DEEPSEA Sender: Receiver: Port of loading: Vessel Name: Port of delivery: - NOMSS CNNBG Container no.: EISU8491488 Container type: 40HC F-weight Quantity Content A-weight Loading meter Volume Package STP 8154,5 1 604 0,00 Carton 63,095 8154,5 0 8154,5 0,00 63,095 8154,5 0 16700 8,9363 NOK 149 236,21 NOK"
-
-def get_loading_date(base64_string, order_no):
-    eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})",base64.b64decode(base64_string.encode('utf-8')).decode('utf-8') , re.IGNORECASE)
-    eta = eta_match.group(1) if eta_match else None
-    return eta
-
 def parse_order_block_for_container(block, invoice_base_no, order_index):
     container_data = {}
     container_data['Invoice'] = f"{invoice_base_no}/{order_index}"
@@ -133,7 +197,7 @@ def parse_order_block_for_container(block, invoice_base_no, order_index):
 
     container_no_type = re.search(r"Container type: (\w+)", block, re.MULTILINE | re.IGNORECASE)
     container_data['Type'] = container_no_type.group(1) if container_no_type else None
-    
+
     return container_data
 
 
@@ -236,17 +300,91 @@ def parse_invoice_data(text, base64_string):
 
     return output_data
 
-# Read the input text
-with open('./input_pdf/pdfplumper_input.txt', 'r') as file:
-    input_text = file.read()
 
-base64_string = base64.b64encode('Loading date 01.03.2024'.encode('utf-8')).decode('utf-8')
+def get_loading_date(pdf_data_base64, order_number):
+    loading_date = None
+    input_stream = io.BytesIO(pdf_data_base64)
+    with pdfplumber.open(input_stream) as pdf:
+        for page_number, page in enumerate(pdf.pages):
+            words = page.extract_words(use_text_flow=True)
+            cleaned_text = " ".join([word['text'] for word in words])
+            print(cleaned_text)
+            if order_number in cleaned_text:
+                loading_date = get_loading_date_from_text(cleaned_text, order_number)
+                break
 
-# Parse the invoice data
-data = parse_invoice_data(input_text, base64_string)
 
-# Write the output JSON to a file
-with open('./output/output.json', 'w') as json_file:
-    json.dump(data, json_file, indent=2)
+    return loading_date
 
-print("Parsing complete. JSON data saved to ./output/output.json.")
+
+def get_loading_date_from_text(text, order_number):
+    # Regular expression to find the order number and corresponding loading date
+    pattern = rf"Order No\.: {order_number}.*?Loading date (\d{{2}}\.\d{{2}}\.\d{{4}})"
+
+    # Search the text for the pattern
+    match = re.search(pattern, text, re.DOTALL)
+
+    # If a match is found, return the loading date
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+def get_bill_of_landing(pdf_data_base64, order_number):
+    bill_of_landing = None
+    input_stream = io.BytesIO(pdf_data_base64)
+    with pdfplumber.open(input_stream) as pdf:
+        for page_number, page in enumerate(pdf.pages):
+            words = page.extract_words(use_text_flow=True)
+            cleaned_text = " ".join([word['text'] for word in words])
+            #print(cleaned_text)
+            if order_number in cleaned_text:
+                bill_of_landing = get_order_details(cleaned_text, order_number)
+                break
+
+
+    return bill_of_landing
+
+
+def get_order_details(text, order_number):
+    # Regular expression to find the order number and match everything to the end of the line
+    pattern = rf"Order No\.: {order_number}.*$"
+
+    # Search the text for the pattern
+    match = re.search(pattern, text, re.MULTILINE)
+
+    # If a match is found, return the matched text
+    if match:
+        return match.group(0)
+    else:
+        return None
+
+def start():
+    input_dir = './input_pdf'
+    output_dir = './output'
+
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.pdf'):
+            pdf_path = os.path.join(input_dir, filename)
+
+            # Read the content of the PDF file and convert to a base64 string
+            with open(pdf_path, 'rb') as pdf_file:
+                pdf_data = pdf_file.read()
+                base64_string = base64.b64encode(pdf_data).decode('utf-8')
+
+            input_stream = io.BytesIO(pdf_data)
+            # Parse the invoice data
+            data = parse_pdf_via_plumber(input_stream, base64.b64decode(base64_string))
+
+            # Define the output JSON file name
+            json_filename = os.path.splitext(filename)[0] + '.json'
+
+            # Write the output JSON to a file in the output directory
+            with open(os.path.join(output_dir, json_filename), 'w') as json_file:
+                json.dump(data, json_file, indent=2)
+
+            print(f'Parsed {filename} and saved to {json_filename}')
+
+
+if __name__ == "__main__":
+    start()
