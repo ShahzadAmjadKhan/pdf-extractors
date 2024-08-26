@@ -153,13 +153,13 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
             if line.endswith(currency) or line.endswith(currency + " *"):
                 charge_type_match = re.match(r"(.*?)\d+\s*\d+,\d+\s"+currency, line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
+                charge_type = charge_type.rstrip(' ')
                 # if charge_type is None:
                 #     charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
                 #     charge_type = charge_type_match.group(1) if charge_type_match else None
-                if index+1 < len(charges_lines):
+                if charge_type.endswith("/"):
                     next_line = charges_lines[index+1]
-                    if not (next_line.endswith(currency) or next_line.endswith(currency + " *")):
-                        charge_type = charge_type + " " + next_line
+                    charge_type = charge_type + " " + next_line
 
                 unit_price_matches = re.findall(r"(\d+\s*\d+,\d+)\s"+currency, line)
                 if len(unit_price_matches) == 2:
