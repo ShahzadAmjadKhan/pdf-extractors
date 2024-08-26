@@ -5,6 +5,7 @@ import base64
 # Function to parse individual order blocks
 def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, base64_string):
     order_data = {}
+    bol_line = None
 
     reference_no_match = re.search(r"Order No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
     reference_no = reference_no_match.group(1) if reference_no_match else None
@@ -108,7 +109,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
 
     # Extract Tour Number
     tour_no_match = re.search(r"Tour No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
-    if tour_no_match is None:
+    if tour_no_match is None and bol_line is not None:
         tour_no_match = re.search(r"Tour No.: (\d+)", bol_line, re.MULTILINE | re.IGNORECASE)
     order_data['Tour Number'] = tour_no_match.group(1) if tour_no_match else None
 
@@ -161,7 +162,7 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
                     next_line = charges_lines[index+1]
                     charge_type = charge_type + " " + next_line
 
-                unit_price_matches = re.findall(r"(\d+\s*\d+,\d+)\s"+currency, line)
+                unit_price_matches = re.findall(r"(\d+\s*\d+,*\d+)\s"+currency, line)
                 if len(unit_price_matches) == 2:
                     unit_price = float(unit_price_matches[0].split(' ')[0])
                     currency = 'USD'
@@ -192,20 +193,6 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
                 charge_data = {}
 
     return charges
-
-
-def extract_and_convert_prices(text):
-    # Regex pattern to match numbers with optional space and comma
-    pattern = r'^.*?(?=\s+\d)(.*)\w{3}'
-
-    # Find all matches in the text
-    match = re.search(pattern, text)
-    price = match.group(1)
-
-    # Convert matched prices to float
-    converted_prices = float(price.replace(' ', '').replace(',', '.'))
-
-    return converted_prices
 
 
 def get_vat(text):
