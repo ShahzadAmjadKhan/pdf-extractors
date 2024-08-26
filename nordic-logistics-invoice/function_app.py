@@ -138,10 +138,13 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
 
     # Extract ETD
     etd_match = re.search(r"Delivery date (\d{2}\.\d{2}\.\d{4})", block, re.MULTILINE | re.IGNORECASE)
+    etd = etd_match.group(1) if etd_match else None
+    if etd is None:
+        etd = get_delivery_date(base64_string, reference_no)
     order_data['ETD'] = etd_match.group(1) if etd_match else None
 
     # Extract Vessel/Voyage
-    vessel_voyage_match = re.search(r"Vessel name:\s*(.+?)\s+Container type:", block, re.MULTILINE | re.IGNORECASE)
+    vessel_voyage_match = re.search(r"Vessel name:\s*(.+?)\s*Container type:", block, re.MULTILINE | re.IGNORECASE)
     order_data['Vessel/Voyage'] = vessel_voyage_match.group(1).strip() if vessel_voyage_match else None
 
     # Extract POL
@@ -319,6 +322,35 @@ def get_loading_date(pdf_data_base64, order_number):
 def get_loading_date_from_text(text, order_number):
     # Regular expression to find the order number and corresponding loading date
     pattern = rf"Order No\.: {order_number}.*?Loading date (\d{{2}}\.\d{{2}}\.\d{{4}})"
+
+    # Search the text for the pattern
+    match = re.search(pattern, text, re.DOTALL)
+
+    # If a match is found, return the loading date
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+def get_delivery_date(pdf_data_base64, order_number):
+    loading_date = None
+    input_stream = io.BytesIO(pdf_data_base64)
+    with pdfplumber.open(input_stream) as pdf:
+        for page_number, page in enumerate(pdf.pages):
+            words = page.extract_words(use_text_flow=True)
+            cleaned_text = " ".join([word['text'] for word in words])
+            print(cleaned_text)
+            if order_number in cleaned_text:
+                loading_date = get_delivery_date_from_text(cleaned_text, order_number)
+                break
+
+
+    return loading_date
+
+
+def get_delivery_date_from_text(text, order_number):
+    # Regular expression to find the order number and corresponding loading date
+    pattern = rf"Order No\.: {order_number}.*?Delivery date (\d{{2}}\.\d{{2}}\.\d{{4}})"
 
     # Search the text for the pattern
     match = re.search(pattern, text, re.DOTALL)
