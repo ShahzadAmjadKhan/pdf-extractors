@@ -1,5 +1,5 @@
 import os
-from functiona_app import *
+from function_app import *
 
 INPUT_DIR = './input_pdf'
 OUTPUT_DIR = './output'
