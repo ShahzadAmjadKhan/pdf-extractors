@@ -1,0 +1,443 @@
+{
+  "RawInvoiceContainers": [
+    {
+      "Invoice": "3054426/1",
+      "Container ID": "EISU8541110",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3054426/2",
+      "Container ID": "EITU1280580",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3054426/3",
+      "Container ID": "FFAU1596237",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3054426/4",
+      "Container ID": "TXGU5770851",
+      "Type": "40HC"
+    },
+    {
+      "Invoice": "3054426/5",
+      "Container ID": "EGHU1064701",
+      "Type": "40DC"
+    },
+    {
+      "Invoice": "3054426/6",
+      "Container ID": "EGHU1064701",
+      "Type": "40DC"
+    },
+    {
+      "Invoice": "3054426/7",
+      "Container ID": "EGHU1064701",
+      "Type": "40DC"
+    }
+  ],
+  "RawInvoices": [
+    {
+      "Invoice No": "3054426/1",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "K02100578",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 159133.24,
+      "VAT": 78.75,
+      "Total": 159211.99,
+      "Currency": "NOK",
+      "Reference No.": "715235",
+      "Due Date": "03.05.2022",
+      "Tour Number": "298117"
+    },
+    {
+      "Invoice No": "3054426/2",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "K02100578",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 153453.24,
+      "VAT": 0.0,
+      "Total": 153453.24,
+      "Currency": "NOK",
+      "Reference No.": "715241",
+      "Due Date": "03.05.2022",
+      "Tour Number": "298117"
+    },
+    {
+      "Invoice No": "3054426/3",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "K02100578",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 153453.24,
+      "VAT": 0.0,
+      "Total": 153453.24,
+      "Currency": "NOK",
+      "Reference No.": "715242",
+      "Due Date": "03.05.2022",
+      "Tour Number": "298117"
+    },
+    {
+      "Invoice No": "3054426/4",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "KO2100687-KO2100174",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 155873.24,
+      "VAT": 78.75,
+      "Total": 155951.99,
+      "Currency": "NOK",
+      "Reference No.": "721402",
+      "Due Date": "03.05.2022",
+      "Tour Number": "300876"
+    },
+    {
+      "Invoice No": "3054426/5",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "KO2100293/KO2100128",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 155186.3,
+      "VAT": 78.75,
+      "Total": 155265.05,
+      "Currency": "NOK",
+      "Reference No.": "721405",
+      "Due Date": "03.05.2022",
+      "Tour Number": "300877"
+    },
+    {
+      "Invoice No": "3054426/6",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "KO2100211/262/667",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 475.0,
+      "VAT": 0.0,
+      "Total": 475.0,
+      "Currency": "NOK",
+      "Reference No.": "721406",
+      "Due Date": "03.05.2022",
+      "Tour Number": "300877"
+    },
+    {
+      "Invoice No": "3054426/7",
+      "Type": "Invoice",
+      "Invoice Date": "04.03.2022",
+      "Bill of Lading": "KO2100295",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00c3\u00a5sveien 4,1414 Kolbotn Troll\u00c3\u00a5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "21.12.2021",
+      "ETD": "14.02.2022",
+      "Vessel/Voyage": "EVER ALP - 1170-001W",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 475.0,
+      "VAT": 0.0,
+      "Total": 475.0,
+      "Currency": "NOK",
+      "Reference No.": "721407",
+      "Due Date": "03.05.2022",
+      "Tour Number": "300877"
+    }
+  ],
+  "RawInvoiceCharges": [
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "Sj\u00c3\u00b8frakt 1x40'HC 21/12 EVG",
+      "Unit Price": 16700.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 152958.64,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "SECA USD",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 494.6,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "THC",
+      "Unit Price": 3225.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 3225.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 1665.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1665.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/1",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3054426/2",
+      "Charge Type": "Sj\u00c3\u00b8frakt 1x40'HC 21/12 EVG",
+      "Unit Price": 16700.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 152958.64,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/2",
+      "Charge Type": "SECA USD",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 494.6,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/3",
+      "Charge Type": "Sj\u00c3\u00b8frakt 1x40'HC 21/12 EVG",
+      "Unit Price": 16700.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 152958.64,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/3",
+      "Charge Type": "SECA USD",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 494.6,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "Sj\u00c3\u00b8frakt 1x40'HC 21/12 EVG",
+      "Unit Price": 16700.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 152958.64,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "SECA USD",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 494.6,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/4",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "Sj\u00c3\u00b8frakt 1x40'DC 21/12 EVG",
+      "Unit Price": 16500.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 151126.8,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "SECA USD",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 494.6,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "Consolidation fee USD",
+      "Unit Price": 125.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.1592,
+      "Total": 1144.9,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/5",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3054426/6",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3054426/7",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    }
+  ]
+}
