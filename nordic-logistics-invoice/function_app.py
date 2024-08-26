@@ -68,7 +68,7 @@ def parse_pdf_via_plumber(input_stream, pdf_data_base64):
         # Iterate through the pages and extract text
         for page_number, page in enumerate(pdf.pages):
             text += page.extract_text()
-    #print(text)
+    print(text)
     output_data = parse_invoice_data(text, pdf_data_base64)
     return output_data
 
@@ -141,7 +141,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     etd = etd_match.group(1) if etd_match else None
     if etd is None:
         etd = get_delivery_date(base64_string, reference_no)
-    order_data['ETD'] = etd_match.group(1) if etd_match else None
+    order_data['ETD'] = etd
 
     # Extract Vessel/Voyage
     vessel_voyage_match = re.search(r"Vessel name:\s*(.+?)\s*Container type:", block, re.MULTILINE | re.IGNORECASE)
@@ -305,14 +305,21 @@ def parse_invoice_data(text, base64_string):
 
 def get_loading_date(pdf_data_base64, order_number):
     loading_date = None
+    order_splitted_across_page = False
     input_stream = io.BytesIO(pdf_data_base64)
     with pdfplumber.open(input_stream) as pdf:
         for page_number, page in enumerate(pdf.pages):
             words = page.extract_words(use_text_flow=True)
             cleaned_text = " ".join([word['text'] for word in words])
             print(cleaned_text)
-            if order_number in cleaned_text:
+            if order_number in cleaned_text and order_splitted_across_page == False:
                 loading_date = get_loading_date_from_text(cleaned_text, order_number)
+                if loading_date:
+                    break
+                else:
+                    order_splitted_across_page = True    
+            elif order_splitted_across_page == True: 
+                delivery_date = get_loading_date_first_occurrence(cleaned_text)     
                 break
 
 
@@ -331,21 +338,37 @@ def get_loading_date_from_text(text, order_number):
         return match.group(1)
     else:
         return None
+    
+def get_loading_date_first_occurrence(text) :
+    # Regular expression to find the first occurrence of Delivery Date
+    match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", text)
+
+    if match:
+        loading_date = match.group(1)
+        return loading_date
+    else:
+        return None    
 
 def get_delivery_date(pdf_data_base64, order_number):
-    loading_date = None
+    delivery_date = None
+    order_splitted_across_page = False
     input_stream = io.BytesIO(pdf_data_base64)
     with pdfplumber.open(input_stream) as pdf:
         for page_number, page in enumerate(pdf.pages):
             words = page.extract_words(use_text_flow=True)
             cleaned_text = " ".join([word['text'] for word in words])
             print(cleaned_text)
-            if order_number in cleaned_text:
-                loading_date = get_delivery_date_from_text(cleaned_text, order_number)
+            if order_number in cleaned_text and order_splitted_across_page == False:
+                delivery_date = get_delivery_date_from_text(cleaned_text, order_number)
+                if delivery_date:
+                    break
+                else:
+                    order_splitted_across_page = True    
+            elif order_splitted_across_page == True: 
+                delivery_date = get_delivery_date_first_occurrence(cleaned_text)     
                 break
 
-
-    return loading_date
+    return delivery_date
 
 
 def get_delivery_date_from_text(text, order_number):
@@ -360,6 +383,20 @@ def get_delivery_date_from_text(text, order_number):
         return match.group(1)
     else:
         return None
+
+def get_delivery_date_first_occurrence(text) :
+    # Regular expression to find the first occurrence of Delivery Date
+    match = re.search(r"Delivery date (\d{2}\.\d{2}\.\d{4})", text)
+
+    if match:
+        delivery_date = match.group(1)
+        return delivery_date
+    else:
+        return None
+
+
+
+
 
 def get_bill_of_landing(pdf_data_base64, order_number):
     bill_of_landing = None
