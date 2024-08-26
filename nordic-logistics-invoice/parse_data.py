@@ -147,51 +147,49 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
 
     for index, line in enumerate(charges_lines):
         charge_data['Invoice'] = f"{invoice_base_no}/{order_index}"
-        if line.endswith("NOK") or line.endswith("NOK *"):
-            charge_type_match = re.match(r"^(.*?)(?=\s+\d)\s\d+\s", line)
-            charge_type = charge_type_match.group(1) if charge_type_match else None
-            if charge_type is None:
-                charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
+        currency_match = re.search(r"\d{1,3}(?: \d{3})*,\d{2}\s+(\w{3})", line)
+        currency = currency_match.group(1) if currency_match else None
+        if currency is not None:
+            if line.endswith(currency) or line.endswith(currency + " *"):
+                charge_type_match = re.match(r"(.*?)\d+\s*\d+,\d+\s"+currency, line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
+                # if charge_type is None:
+                #     charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
+                #     charge_type = charge_type_match.group(1) if charge_type_match else None
+                if index+1 < len(charges_lines):
+                    next_line = charges_lines[index+1]
+                    if not (next_line.endswith(currency) or next_line.endswith(currency + " *")):
+                        charge_type = charge_type + " " + next_line
 
-            if charge_type.__contains__("Seafreight"):
-                next_line = charges_lines[index+1]
-                if bool(re.match(r'^\d', next_line)):
-                    charge_type = charge_type + " " + next_line
+                unit_price_matches = re.findall(r"(\d+\s*\d+,\d+)\s"+currency, line)
+                if len(unit_price_matches) == 2:
+                    unit_price = float(unit_price_matches[0].split(' ')[0])
+                    currency = 'USD'
+                    exchange_rate = unit_price_matches[0].split(' ')[1]
+                    exchange_rate = float(exchange_rate.replace(' ', '').replace(',', '.'))
+                    total = unit_price_matches[1] if unit_price_matches[1] else '0.0'
+                    total = float(total.replace(' ', '').replace(',', '.'))
+                else:
+                    unit_price = unit_price_matches[0] if unit_price_matches[0] else 0.0
+                    unit_price = float(unit_price.replace(' ', '').replace(',', '.'))
+                    exchange_rate = 1.0000
+                    total = unit_price
 
-            if charge_type.__contains__("USD"):
-                unit_price_match = re.search(r"\s(\d+)\s", line)
-                unit_price = unit_price_match.group(1) if unit_price_match else 0.0
-                unit_price = float(unit_price)
-                currency = 'USD'
-                exchange_rate_match = re.search(r"\b(\d+\s*,\d+)", line)
-                exchange_rate = exchange_rate_match.group(1) if exchange_rate_match else "0.0"
-                exchange_rate = float(exchange_rate.replace(' ', '').replace(',', '.'))
-                total_match = re.search(r"\s\d+\s\d+,\d+\s\w{3}\s(\d+\s*\d+,\d+)", line)
-                total = total_match.group(1) if total_match else "0.0"
-                total = float(total.replace(' ', '').replace(',', '.'))
-            else:
-                unit_price = extract_and_convert_prices(line)
-                currency_match = re.search(r"\d{1,3}(?: \d{3})*,\d{2}\s+(\w{3})", line)
-                currency = currency_match.group(1) if currency_match else None
-                exchange_rate = 1.0000
-                total = unit_price
+                vat_match = re.search(r"([\d\s,]+) \w{3} \*", line)
+                vat_amount = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
+                final_vat = vat_amount * vat_percentage
 
-            vat_match = re.search(r"([\d\s,]+) \w{3} \*", line)
-            vat_amount = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
-            final_vat = vat_amount * vat_percentage
-
-            charge_data['Charge Type'] = charge_type.strip(' ')
-            charge_data['Unit Price'] = unit_price
-            charge_data['Currency'] = currency
-            charge_data['Exchange Rate'] = exchange_rate
-            charge_data['Total'] = total + final_vat
-            charge_data['Currency Total'] = 'NOK'
-            charge_data['VAT'] = final_vat
-            if vat_amount > 0.0:
-                charge_data['VAT Percentage'] = str(vat_percentage * 100) + '%'
-            charges.append(charge_data)
-            charge_data = {}
+                charge_data['Charge Type'] = charge_type.strip(' ')
+                charge_data['Unit Price'] = unit_price
+                charge_data['Currency'] = currency
+                charge_data['Exchange Rate'] = exchange_rate
+                charge_data['Total'] = total + final_vat
+                charge_data['Currency Total'] = 'NOK'
+                charge_data['VAT'] = final_vat
+                if vat_amount > 0.0:
+                    charge_data['VAT Percentage'] = str(vat_percentage * 100) + '%'
+                charges.append(charge_data)
+                charge_data = {}
 
     return charges
 
