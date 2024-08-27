@@ -233,6 +233,8 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
     charge_data = {}
 
     charges_text_match = re.search(r"Volume(.*)Total amount without VAT", block, re.DOTALL|re.IGNORECASE)
+    if charges_text_match is None:
+        charges_text_match = re.search(r"Port of delivery:\s\w{5}\n(.*)Total amount without VAT", block, re.DOTALL|re.IGNORECASE)
     charges_text = charges_text_match.group(1) if charges_text_match else None
     charges_lines = charges_text.splitlines()
 
@@ -242,17 +244,14 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
         currency = currency_match.group(1) if currency_match else None
         if currency is not None:
             if line.endswith(currency) or line.endswith(currency + " *"):
-                charge_type_match = re.match(r"(.*?)\d+\s*\d+,\d+\s"+currency, line)
+                charge_type_match = re.match(r"(.*?)\s\d*\s*\d+,\d+\s"+currency, line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
                 charge_type = charge_type.rstrip(' ')
-                # if charge_type is None:
-                #     charge_type_match = re.match(r"^(.*?)(?=\s+\d)", line)
-                #     charge_type = charge_type_match.group(1) if charge_type_match else None
-                if charge_type.endswith("/"):
+                if charge_type.endswith("/") and index + 1 <= len(charges_lines):
                     next_line = charges_lines[index+1]
                     charge_type = charge_type + " " + next_line
 
-                unit_price_matches = re.findall(r"(\d+\s*\d+,*\d+)\s"+currency, line)
+                unit_price_matches = re.findall(r"\s(\d*\s*\d+,\d+)\s"+currency, line)
                 if len(unit_price_matches) == 2:
                     unit_price = float(unit_price_matches[0].split(' ')[0])
                     currency = 'USD'
@@ -266,7 +265,7 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
                     exchange_rate = 1.0000
                     total = unit_price
 
-                vat_match = re.search(r"([\d\s,]+) \w{3} \*", line)
+                vat_match = re.search(r"\s+([\d\s,]+) \w{3} \*", line)
                 vat_amount = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
                 final_vat = vat_amount * vat_percentage
 

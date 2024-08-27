@@ -1,0 +1,141 @@
+{
+  "RawInvoiceContainers": [
+    {
+      "Invoice": "3065943/1",
+      "Container ID": null,
+      "Type": null
+    },
+    {
+      "Invoice": "3065943/2",
+      "Container ID": null,
+      "Type": null
+    },
+    {
+      "Invoice": "3065943/3",
+      "Container ID": null,
+      "Type": null
+    }
+  ],
+  "RawInvoices": [
+    {
+      "Invoice No": "3065943/1",
+      "Type": "Invoice",
+      "Invoice Date": "12.07.2022",
+      "Bill of Lading": "KO2100728-2/KO2100779/KO2100492-2",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "07.03.2022",
+      "ETD": "14.04.2022",
+      "Vessel/Voyage": null,
+      "POL": null,
+      "POD": null,
+      "NetValue": 296.0,
+      "VAT": 1074.0,
+      "Total": 1370.0,
+      "Currency": "NOK",
+      "Reference No.": "755688",
+      "Due Date": "10.09.2022",
+      "Tour Number": null
+    },
+    {
+      "Invoice No": "3065943/2",
+      "Type": "Invoice",
+      "Invoice Date": "12.07.2022",
+      "Bill of Lading": "KO2100728-2",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "07.03.2022",
+      "ETD": "14.04.2022",
+      "Vessel/Voyage": null,
+      "POL": null,
+      "POD": null,
+      "NetValue": 296.0,
+      "VAT": 1074.0,
+      "Total": 1370.0,
+      "Currency": "NOK",
+      "Reference No.": "795715",
+      "Due Date": "10.09.2022",
+      "Tour Number": null
+    },
+    {
+      "Invoice No": "3065943/3",
+      "Type": "Invoice",
+      "Invoice Date": "12.07.2022",
+      "Bill of Lading": "KO2100692/KO2100728-2/KO2100766/KO2100691\nClaims must be reported in writing within 8 days.",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "07.03.2022",
+      "ETD": "14.04.2022",
+      "Vessel/Voyage": null,
+      "POL": null,
+      "POD": null,
+      "NetValue": 471.0,
+      "VAT": 1117.75,
+      "Total": 1588.75,
+      "Currency": "NOK",
+      "Reference No.": "797716",
+      "Due Date": "10.09.2022",
+      "Tour Number": null
+    }
+  ],
+  "RawInvoiceCharges": [
+    {
+      "Invoice": "3065943/1",
+      "Charge Type": "Bryggeleie tom 19/04",
+      "Unit Price": 296.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 370.0,
+      "Currency Total": "NOK",
+      "VAT": 74.0,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3065943/2",
+      "Charge Type": "Bryggeleie tom 19/04",
+      "Unit Price": 296.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 370.0,
+      "Currency Total": "NOK",
+      "VAT": 74.0,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3065943/3",
+      "Charge Type": "doc fee evergreen",
+      "Unit Price": 100.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 125.0,
+      "Currency Total": "NOK",
+      "VAT": 25.0,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3065943/3",
+      "Charge Type": "Adm fee",
+      "Unit Price": 75.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 93.75,
+      "Currency Total": "NOK",
+      "VAT": 18.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3065943/3",
+      "Charge Type": "Bryggeleie tom 19/04",
+      "Unit Price": 296.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 370.0,
+      "Currency Total": "NOK",
+      "VAT": 74.0,
+      "VAT Percentage": "25.0%"
+    }
+  ]
+}
