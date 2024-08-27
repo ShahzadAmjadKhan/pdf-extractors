@@ -244,14 +244,14 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
         currency = currency_match.group(1) if currency_match else None
         if currency is not None:
             if line.endswith(currency) or line.endswith(currency + " *"):
-                charge_type_match = re.match(r"(.*?)\s\d*\s*\d+,\d+\s"+currency, line)
+                charge_type_match = re.match(r"(.*?)\s[\d\s]*\d+,\d+\s"+currency, line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
                 charge_type = charge_type.rstrip(' ')
                 if charge_type.endswith("/") and index + 1 <= len(charges_lines):
                     next_line = charges_lines[index+1]
                     charge_type = charge_type + " " + next_line
 
-                unit_price_matches = re.findall(r"\s(\d*\s*\d+,\d+)\s"+currency, line)
+                unit_price_matches = re.findall(r"\s([\d\s]*\d+,\d+)\s"+currency, line)
                 if len(unit_price_matches) == 2:
                     unit_price = float(unit_price_matches[0].split(' ')[0])
                     currency = 'USD'
