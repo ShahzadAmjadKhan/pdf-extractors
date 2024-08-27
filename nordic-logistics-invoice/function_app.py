@@ -61,6 +61,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         status_code=200
     )
 
+def parse_pdf_via_plumber_and_use_words(input_stream, pdf_data_base64):
+
+    text = ""
+    input_stream = io.BytesIO(pdf_data_base64)
+    with pdfplumber.open(input_stream) as pdf:
+        for page_number, page in enumerate(pdf.pages):
+            words = page.extract_words(use_text_flow=True)
+            cleaned_text = " ".join([word['text'] for word in words])
+            #print(cleaned_text)
+            text += cleaned_text
+
+    return text
+
 def parse_pdf_via_plumber(input_stream, pdf_data_base64):
 
     text = ""
@@ -68,15 +81,15 @@ def parse_pdf_via_plumber(input_stream, pdf_data_base64):
         # Iterate through the pages and extract text
         for page_number, page in enumerate(pdf.pages):
             text += page.extract_text()
-    print(text)
-    output_data = parse_invoice_data(text, pdf_data_base64)
+    # print(text)
+    word_text = parse_pdf_via_plumber_and_use_words(input_stream, pdf_data_base64)
+    output_data = parse_invoice_data(text,  word_text)
     return output_data
 
 
 # Function to parse individual order blocks
-def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, base64_string):
+def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_index, vat, word_block):
     order_data = {}
-    bol_line = None
 
     reference_no_match = re.search(r"Order No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
     reference_no = reference_no_match.group(1) if reference_no_match else None
@@ -92,10 +105,10 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
     # Extract Bill of Lading
-    bol_match = re.search(r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n", block, re.MULTILINE | re.IGNORECASE)
+    bol_pattern = r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n"
+    bol_match = re.search(bol_pattern, block, re.MULTILINE | re.IGNORECASE)
     if bol_match is None:
-        bol_line = get_bill_of_landing(base64_string, reference_no)
-        bol_match = re.search(r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n", bol_line, re.MULTILINE | re.IGNORECASE)
+        bol_match = re.search(bol_pattern, word_block, re.MULTILINE | re.IGNORECASE)
 
     if bol_match.group(1) is not None:
         order_data['Bill of Lading'] = bol_match.group(1).strip("\n").strip(" ")
@@ -130,21 +143,26 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Customer Number'] = customer_number_match.group(1) if customer_number_match else None
 
     # Extract ETA
-    eta_match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", block, re.MULTILINE | re.IGNORECASE)
+    eta_pattern = r"Loading date (\d{2}\.\d{2}\.\d{4})"
+    eta_match = re.search(eta_pattern, block, re.MULTILINE | re.IGNORECASE)
+    if eta_match is None:
+        eta_match = re.search(eta_pattern, word_block, re.MULTILINE | re.IGNORECASE)
     eta = eta_match.group(1) if eta_match else None
-    if eta is None:
-        eta = get_loading_date(base64_string, reference_no)
     order_data['ETA'] = eta
 
     # Extract ETD
-    etd_match = re.search(r"Delivery date (\d{2}\.\d{2}\.\d{4})", block, re.MULTILINE | re.IGNORECASE)
+    etd_pattern = r"Delivery date (\d{2}\.\d{2}\.\d{4})"
+    etd_match = re.search(etd_pattern, block, re.MULTILINE | re.IGNORECASE)
+    if etd_match is None:
+        etd_match = re.search(etd_pattern, word_block, re.MULTILINE | re.IGNORECASE)
     etd = etd_match.group(1) if etd_match else None
-    if etd is None:
-        etd = get_delivery_date(base64_string, reference_no)
     order_data['ETD'] = etd
 
     # Extract Vessel/Voyage
     vessel_voyage_match = re.search(r"Vessel name:\s*(.+?)\s*Container type:", block, re.MULTILINE | re.IGNORECASE)
+    if vessel_voyage_match is None:
+        vessel_voyage_match = re.search(r"Vessel name:\s*Port of delivery: (.+?)\w{5}\s*\w{5}\s*Container no.:", word_block, re.MULTILINE | re.IGNORECASE)
+
     order_data['Vessel/Voyage'] = vessel_voyage_match.group(1).strip() if vessel_voyage_match else None
 
     # Extract POL
@@ -182,22 +200,28 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Due Date'] = due_date_match.group(1) if due_date_match else None
 
     # Extract Tour Number
-    tour_no_match = re.search(r"Tour No.: (\d+)", block, re.MULTILINE | re.IGNORECASE)
-    if tour_no_match is None and bol_line is not None:
-        tour_no_match = re.search(r"Tour No.: (\d+)", bol_line, re.MULTILINE | re.IGNORECASE)
+    tour_pattern = r"Tour No.: (\d+)"
+    tour_no_match = re.search(tour_pattern, block, re.MULTILINE | re.IGNORECASE)
+    if tour_no_match is None:
+        tour_no_match = re.search(tour_pattern, word_block, re.MULTILINE | re.IGNORECASE)
+
     order_data['Tour Number'] = tour_no_match.group(1) if tour_no_match else None
 
     return order_data
 
 
-def parse_order_block_for_container(block, invoice_base_no, order_index):
+def parse_order_block_for_container(block, invoice_base_no, order_index, word_block):
     container_data = {}
     container_data['Invoice'] = f"{invoice_base_no}/{order_index}"
 
     container_no_match = re.search(r"Container no.: (\w+)", block, re.MULTILINE | re.IGNORECASE)
     container_data['Container ID'] = container_no_match.group(1) if container_no_match else None
 
-    container_no_type = re.search(r"Container type: (\w+)", block, re.MULTILINE | re.IGNORECASE)
+    container_no_pattern = r"Container type: (\w+)"
+    container_no_type = re.search(container_no_pattern, block, re.MULTILINE | re.IGNORECASE)
+    if container_no_type is None:
+        container_no_type = re.search(container_no_pattern, word_block, re.MULTILINE | re.IGNORECASE)
+
     container_data['Type'] = container_no_type.group(1) if container_no_type else None
 
     return container_data
@@ -268,7 +292,7 @@ def get_vat(text):
     return vat
 
 # Function to parse the invoice data
-def parse_invoice_data(text, base64_string):
+def parse_invoice_data(text, word_text):
     invoices = []
     containers = []
     charges = []
@@ -276,19 +300,22 @@ def parse_invoice_data(text, base64_string):
 
     # Split the text into invoice blocks using the "Invoice \d+ from dd.dd.dddd" pattern
     invoice_blocks = re.split(r"Invoice (\d+) from \d{2}\.\d{2}\.\d{4}", text, re.IGNORECASE)
+    word_invoice_blocks = re.split(r"Invoice (\d+) from \d{2}\.\d{2}\.\d{4}", word_text, re.IGNORECASE)
 
     for i in range(1, len(invoice_blocks), 2):
         invoice_base_no = invoice_blocks[i]  # Get the invoice number
         invoice_content = invoice_blocks[i + 1]
+        word_invoice_content = word_invoice_blocks[i + 1]
 
         # Split further into order blocks based on "Order No.:"
         order_blocks = re.split(r"Order No\.:", invoice_content)
+        word_order_blocks = re.split(r"Order No\.:", word_invoice_content)
 
         for order_index, order_block in enumerate(order_blocks[1:], 1):
-            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index, vat, base64_string)
+            invoice_data = parse_order_block_for_invoice(invoice_blocks[0], "Order No.:" + order_block, invoice_base_no, order_index, vat, word_order_blocks[order_index])
             invoices.append(invoice_data)
 
-            container_data = parse_order_block_for_container(order_block, invoice_base_no, order_index)
+            container_data = parse_order_block_for_container(order_block, invoice_base_no, order_index, word_order_blocks[order_index])
             containers.append(container_data)
 
             charge_data = parse_order_block_for_charges(order_block, invoice_base_no, order_index, vat)
@@ -301,128 +328,3 @@ def parse_invoice_data(text, base64_string):
     }
 
     return output_data
-
-
-def get_loading_date(pdf_data_base64, order_number):
-    loading_date = None
-    order_splitted_across_page = False
-    input_stream = io.BytesIO(pdf_data_base64)
-    with pdfplumber.open(input_stream) as pdf:
-        for page_number, page in enumerate(pdf.pages):
-            words = page.extract_words(use_text_flow=True)
-            cleaned_text = " ".join([word['text'] for word in words])
-            print(cleaned_text)
-            if order_number in cleaned_text and order_splitted_across_page == False:
-                loading_date = get_loading_date_from_text(cleaned_text, order_number)
-                if loading_date:
-                    break
-                else:
-                    order_splitted_across_page = True    
-            elif order_splitted_across_page == True: 
-                delivery_date = get_loading_date_first_occurrence(cleaned_text)     
-                break
-
-
-    return loading_date
-
-
-def get_loading_date_from_text(text, order_number):
-    # Regular expression to find the order number and corresponding loading date
-    pattern = rf"Order No\.: {order_number}.*?Loading date (\d{{2}}\.\d{{2}}\.\d{{4}})"
-
-    # Search the text for the pattern
-    match = re.search(pattern, text, re.DOTALL)
-
-    # If a match is found, return the loading date
-    if match:
-        return match.group(1)
-    else:
-        return None
-    
-def get_loading_date_first_occurrence(text) :
-    # Regular expression to find the first occurrence of Delivery Date
-    match = re.search(r"Loading date (\d{2}\.\d{2}\.\d{4})", text)
-
-    if match:
-        loading_date = match.group(1)
-        return loading_date
-    else:
-        return None    
-
-def get_delivery_date(pdf_data_base64, order_number):
-    delivery_date = None
-    order_splitted_across_page = False
-    input_stream = io.BytesIO(pdf_data_base64)
-    with pdfplumber.open(input_stream) as pdf:
-        for page_number, page in enumerate(pdf.pages):
-            words = page.extract_words(use_text_flow=True)
-            cleaned_text = " ".join([word['text'] for word in words])
-            print(cleaned_text)
-            if order_number in cleaned_text and order_splitted_across_page == False:
-                delivery_date = get_delivery_date_from_text(cleaned_text, order_number)
-                if delivery_date:
-                    break
-                else:
-                    order_splitted_across_page = True    
-            elif order_splitted_across_page == True: 
-                delivery_date = get_delivery_date_first_occurrence(cleaned_text)     
-                break
-
-    return delivery_date
-
-
-def get_delivery_date_from_text(text, order_number):
-    # Regular expression to find the order number and corresponding loading date
-    pattern = rf"Order No\.: {order_number}.*?Delivery date (\d{{2}}\.\d{{2}}\.\d{{4}})"
-
-    # Search the text for the pattern
-    match = re.search(pattern, text, re.DOTALL)
-
-    # If a match is found, return the loading date
-    if match:
-        return match.group(1)
-    else:
-        return None
-
-def get_delivery_date_first_occurrence(text) :
-    # Regular expression to find the first occurrence of Delivery Date
-    match = re.search(r"Delivery date (\d{2}\.\d{2}\.\d{4})", text)
-
-    if match:
-        delivery_date = match.group(1)
-        return delivery_date
-    else:
-        return None
-
-
-
-
-
-def get_bill_of_landing(pdf_data_base64, order_number):
-    bill_of_landing = None
-    input_stream = io.BytesIO(pdf_data_base64)
-    with pdfplumber.open(input_stream) as pdf:
-        for page_number, page in enumerate(pdf.pages):
-            words = page.extract_words(use_text_flow=True)
-            cleaned_text = " ".join([word['text'] for word in words])
-            #print(cleaned_text)
-            if order_number in cleaned_text:
-                bill_of_landing = get_order_details(cleaned_text, order_number)
-                break
-
-
-    return bill_of_landing
-
-
-def get_order_details(text, order_number):
-    # Regular expression to find the order number and match everything to the end of the line
-    pattern = rf"Order No\.: {order_number}.*$"
-
-    # Search the text for the pattern
-    match = re.search(pattern, text, re.MULTILINE)
-
-    # If a match is found, return the matched text
-    if match:
-        return match.group(0)
-    else:
-        return None

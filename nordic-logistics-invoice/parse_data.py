@@ -36,4 +36,4 @@ def start(file_name=""):
 
 
 if __name__ == "__main__":
-    start('3056957.pdf')
+    start()

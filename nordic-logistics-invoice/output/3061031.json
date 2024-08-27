@@ -1,0 +1,356 @@
+{
+  "RawInvoiceContainers": [
+    {
+      "Invoice": "3061031/1",
+      "Container ID": "CMAU1899908",
+      "Type": "20DC"
+    },
+    {
+      "Invoice": "3061031/2",
+      "Container ID": "GESU3557592",
+      "Type": "20DC"
+    },
+    {
+      "Invoice": "3061031/3",
+      "Container ID": "TEMU1748796",
+      "Type": "20DC"
+    },
+    {
+      "Invoice": "3061031/4",
+      "Container ID": "TLLU2353512",
+      "Type": "20DC"
+    }
+  ],
+  "RawInvoices": [
+    {
+      "Invoice No": "3061031/1",
+      "Type": "Invoice",
+      "Invoice Date": "16.05.2022",
+      "Bill of Lading": "KO2100209",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "08.03.2022",
+      "ETD": "09.05.2022",
+      "Vessel/Voyage": "CMA CGM CONCORDE - 0FLBNW",
+      "POL": "CNSGH",
+      "POD": "NOMSS",
+      "NetValue": 52506.37,
+      "VAT": 78.75,
+      "Total": 52585.12,
+      "Currency": "NOK",
+      "Reference No.": "733966",
+      "Due Date": "15.07.2022",
+      "Tour Number": "315531"
+    },
+    {
+      "Invoice No": "3061031/2",
+      "Type": "Invoice",
+      "Invoice Date": "16.05.2022",
+      "Bill of Lading": "KO2100490-2",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "02.03.2022",
+      "ETD": "09.05.2022",
+      "Vessel/Voyage": "CMA CGM PALAIS ROYAL - 0FLBPW1MA",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 52506.37,
+      "VAT": 78.75,
+      "Total": 52585.12,
+      "Currency": "NOK",
+      "Reference No.": "789421",
+      "Due Date": "15.07.2022",
+      "Tour Number": "330039"
+    },
+    {
+      "Invoice No": "3061031/3",
+      "Type": "Invoice",
+      "Invoice Date": "16.05.2022",
+      "Bill of Lading": "KO2100871",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "02.03.2022",
+      "ETD": "09.05.2022",
+      "Vessel/Voyage": "CMA CGM PALAIS ROYAL - 0FLBPW1MA",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 52506.37,
+      "VAT": 78.75,
+      "Total": 52585.12,
+      "Currency": "NOK",
+      "Reference No.": "789475",
+      "Due Date": "15.07.2022",
+      "Tour Number": "330041"
+    },
+    {
+      "Invoice No": "3061031/4",
+      "Type": "Invoice",
+      "Invoice Date": "16.05.2022",
+      "Bill of Lading": "KO2100589-2",
+      "Customer": "NILLE AS",
+      "Customer Address": "Troll\u00e5sveien 4,1414 Kolbotn Troll\u00e5sen,NORWAY",
+      "Customer Number": "1415",
+      "ETA": "02.03.2022",
+      "ETD": "09.05.2022",
+      "Vessel/Voyage": "CMA CGM PALAIS ROYAL - 0FLBPW1MA",
+      "POL": "CNNBG",
+      "POD": "NOMSS",
+      "NetValue": 52506.37,
+      "VAT": 78.75,
+      "Total": 52585.12,
+      "Currency": "NOK",
+      "Reference No.": "789593",
+      "Due Date": "15.07.2022",
+      "Tour Number": "330084"
+    }
+  ],
+  "RawInvoiceCharges": [
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "Seafreight USD 1x20'DC 8/3 CMA",
+      "Unit Price": 5135.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 49824.39,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "SECA USD",
+      "Unit Price": 27.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 261.98,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/1",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "Seafreight USD 1x20'DC 2/3 CMA",
+      "Unit Price": 5135.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 49824.39,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "SECA USD",
+      "Unit Price": 27.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 261.98,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/2",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "Seafreight USD 1x20'DC 2/3 CMA",
+      "Unit Price": 5135.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 49824.39,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "SECA USD",
+      "Unit Price": 27.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 261.98,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/3",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "Seafreight USD 1x20'DC 2/3 CMA",
+      "Unit Price": 5135.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 49824.39,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "SECA USD",
+      "Unit Price": 27.0,
+      "Currency": "USD",
+      "Exchange Rate": 9.7029,
+      "Total": 261.98,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "THC",
+      "Unit Price": 1075.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "Vareavgift",
+      "Unit Price": 555.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 555.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "BL dokumentasjon",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "3061031/4",
+      "Charge Type": "Fortolling",
+      "Unit Price": 315.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 393.75,
+      "Currency Total": "NOK",
+      "VAT": 78.75,
+      "VAT Percentage": "25.0%"
+    }
+  ]
+}
