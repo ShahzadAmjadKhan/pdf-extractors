@@ -105,7 +105,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
     # Extract Bill of Lading
-    bol_pattern = r"Invoice reference:\s([\w\s,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w\s,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w,-/]*)\n|Ext. order no.: ([\w\s,-/]*)\n"
+    bol_pattern = r"Invoice reference:\s([\w ,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w ,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w ,-/]*)\n|Ext. order no.: ([\w ,-/]*)\n"
     bol_match = re.search(bol_pattern, block, re.MULTILINE | re.IGNORECASE)
     if bol_match is None:
         bol_match = re.search(bol_pattern, word_block, re.MULTILINE | re.IGNORECASE)
@@ -178,7 +178,7 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['NetValue'] = float(net_value_match.group(1).replace(" ", "").replace(",", ".")) if net_value_match else None
 
     # Extract VAT (with * after currency)
-    vat_matches = re.findall(r"([\d\s,]+) \w{3} \*", block, re.MULTILINE | re.IGNORECASE)
+    vat_matches = re.findall(r"\s+([\d\s,]+) \w{3} \*", block, re.MULTILINE | re.IGNORECASE)
     total_vat = sum(float(vat.replace(" ", "").replace(",", ".")) for vat in vat_matches)
     order_data['VAT'] = total_vat * vat
 
