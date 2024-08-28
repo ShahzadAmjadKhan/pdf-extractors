@@ -2,11 +2,8 @@ import os
 from function_app import *
 import pandas as pd
 
-INPUT_DIR = './input_pdf'
-OUTPUT_DIR = './output'
 
-
-def process_file(pdf_path, filename):
+def process_file(pdf_path, filename, output_dir):
     with open(pdf_path, 'rb') as pdf_file:
         pdf_data = pdf_file.read()
         base64_string = base64.b64encode(pdf_data).decode('utf-8')
@@ -19,7 +16,7 @@ def process_file(pdf_path, filename):
     json_filename = os.path.splitext(filename)[0] + '.json'
 
     # Write the output JSON to a file in the output directory
-    with open(os.path.join(OUTPUT_DIR, json_filename), 'w') as json_file:
+    with open(os.path.join(output_dir, json_filename), 'w') as json_file:
         json.dump(data, json_file, indent=2)
 
     print(f'Parsed {filename} and saved to {json_filename}')
@@ -69,17 +66,22 @@ def make_excel_file():
 
 
 
-def start(file_name=""):
+def start(input_dir, output_dir, file_name=""):
     if file_name == "":
-        for filename in os.listdir(INPUT_DIR):
+        for filename in os.listdir(input_dir):
             if filename.endswith('.pdf'):
-                pdf_path = os.path.join(INPUT_DIR, filename)
-                process_file(pdf_path, filename)
+                pdf_path = os.path.join(input_dir, filename)
+                process_file(pdf_path, filename, output_dir)
     else:
-        pdf_path = os.path.join(INPUT_DIR, file_name)
-        process_file(pdf_path, file_name)
+        pdf_path = os.path.join(input_dir, file_name)
+        process_file(pdf_path, file_name, output_dir)
 
+TYPE1_INPUT_DIR = './input_pdf/type1'
+TYPE2_INPUT_DIR = './input_pdf/type2'
+TYPE1_OUTPUT_DIR = './output/type1'
+TYPE2_OUTPUT_DIR = './output/type1'
 
 if __name__ == "__main__":
-    start()
-    make_excel_file()
+    start(TYPE1_INPUT_DIR, TYPE1_OUTPUT_DIR)
+    start(TYPE2_INPUT_DIR, TYPE2_OUTPUT_DIR,'0052917.pdf')
+    # make_excel_file()
