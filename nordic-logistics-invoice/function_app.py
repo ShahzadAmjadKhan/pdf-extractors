@@ -105,10 +105,17 @@ def parse_order_block_for_invoice(invoice_block, block, invoice_base_no, order_i
     order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
     # Extract Bill of Lading
-    bol_pattern = r"Invoice reference:\s([\w ,-/，]*)[\s]*Tour No.|Ext. order no.: ([\w ,-/，]*)[\s]*Tour No.|Invoice reference:\s([\w ,-/]*)\n|Ext. order no.: ([\w ,-/]*)\n"
+    bol_pattern = r"Invoice reference:\s(.*?)[\s]*Tour No.|Ext. order no.: (.*?)[\s]*Tour No."
     bol_match = re.search(bol_pattern, block, re.MULTILINE | re.IGNORECASE)
     if bol_match is None:
         bol_match = re.search(bol_pattern, word_block, re.MULTILINE | re.IGNORECASE)
+
+    if bol_match is None:
+        bol_pattern2 = r"Invoice reference:\s(.*?)\n|Ext. order no.: (.*?)\n"
+        bol_match = re.search(bol_pattern2, block, re.MULTILINE | re.IGNORECASE)
+        if bol_match is None:
+            bol_match = re.search(bol_pattern2, word_block, re.MULTILINE | re.IGNORECASE)
+
 
     if bol_match.group(1) is not None:
         order_data['Bill of Lading'] = bol_match.group(1).strip("\n").strip(" ")
@@ -231,27 +238,23 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
 
     charges = []
     charge_data = {}
-
-    charges_text_match = re.search(r"Volume(.*)Total amount without VAT", block, re.DOTALL|re.IGNORECASE)
-    if charges_text_match is None:
-        charges_text_match = re.search(r"Port of delivery:\s\w{5}\n(.*)Total amount without VAT", block, re.DOTALL|re.IGNORECASE)
-    charges_text = charges_text_match.group(1) if charges_text_match else None
-    charges_lines = charges_text.splitlines()
+    currency_match = re.search(r"Total amount without VAT [\d\s,]+ ([A-Z]{3})", block, re.MULTILINE | re.IGNORECASE)
+    total_currency = currency_match.group(1) if currency_match else "NOK"
+    total_value_blocks = re.split(r"Total amount without VAT [\d\s,]+"+total_currency, block, re.MULTILINE | re.IGNORECASE)
+    charges_lines = total_value_blocks[0].splitlines()
 
     for index, line in enumerate(charges_lines):
         charge_data['Invoice'] = f"{invoice_base_no}/{order_index}"
-        currency_match = re.search(r"\d{1,3}(?: \d{3})*,\d{2}\s+(\w{3})", line)
-        currency = currency_match.group(1) if currency_match else None
-        if currency is not None:
-            if line.endswith(currency) or line.endswith(currency + " *"):
-                charge_type_match = re.match(r"(.*?)\s[\d\s]*\d+,\d+\s"+currency, line)
+        if total_currency is not None:
+            if line.endswith(total_currency) or line.endswith(total_currency + " *"):
+                charge_type_match = re.match(r"(.*?)\s[\d\s]*\d+,\d+\s"+total_currency, line)
                 charge_type = charge_type_match.group(1) if charge_type_match else None
                 charge_type = charge_type.rstrip(' ')
                 if charge_type.endswith("/") and index + 1 <= len(charges_lines):
                     next_line = charges_lines[index+1]
                     charge_type = charge_type + " " + next_line
 
-                unit_price_matches = re.findall(r"\s([\d\s]*\d+,\d+)\s"+currency, line)
+                unit_price_matches = re.findall(r"\s([\d\s]*\d+,\d+)\s"+total_currency, line)
                 if len(unit_price_matches) == 2:
                     unit_price = float(unit_price_matches[0].split(' ')[0])
                     currency = 'USD'
@@ -263,6 +266,7 @@ def parse_order_block_for_charges(block, invoice_base_no, order_index, vat_perce
                     unit_price = unit_price_matches[0] if unit_price_matches[0] else 0.0
                     unit_price = float(unit_price.replace(' ', '').replace(',', '.'))
                     exchange_rate = 1.0000
+                    currency = total_currency
                     total = unit_price
 
                 vat_match = re.search(r"\s+([\d\s,]+) \w{3} \*", line)
