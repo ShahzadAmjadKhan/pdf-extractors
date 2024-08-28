@@ -1,7 +1,19 @@
 import os
 from function_app import *
 import pandas as pd
+import pypdfium2 as pdfium
+from pdf_parser_type2 import Type2PdfParser
 
+
+def process_file_via_pypdfium2(pdf_path):
+    pdf = pdfium.PdfDocument(pdf_path)
+    text = ""
+    for page_number in range(len(pdf)):
+        page = pdf.get_page(page_number)
+        page_text = page.get_textpage()
+        text += page_text.get_text_range()
+        # print(text)
+    return text
 
 def process_file(pdf_path, filename, output_dir):
     with open(pdf_path, 'rb') as pdf_file:
@@ -10,7 +22,10 @@ def process_file(pdf_path, filename, output_dir):
 
     input_stream = io.BytesIO(pdf_data)
     # Parse the invoice data
-    data = parse_pdf_via_plumber(input_stream, base64.b64decode(base64_string))
+    # data = parse_pdf_via_plumber(input_stream, base64.b64decode(base64_string))
+    text = process_file_via_pypdfium2(pdf_path)
+    pdf_parser = Type2PdfParser()
+    data = pdf_parser.parse_invoice_data(text)
 
     # Define the output JSON file name
     json_filename = os.path.splitext(filename)[0] + '.json'
@@ -79,9 +94,9 @@ def start(input_dir, output_dir, file_name=""):
 TYPE1_INPUT_DIR = './input_pdf/type1'
 TYPE2_INPUT_DIR = './input_pdf/type2'
 TYPE1_OUTPUT_DIR = './output/type1'
-TYPE2_OUTPUT_DIR = './output/type1'
+TYPE2_OUTPUT_DIR = './output/type2'
 
 if __name__ == "__main__":
-    start(TYPE1_INPUT_DIR, TYPE1_OUTPUT_DIR)
-    start(TYPE2_INPUT_DIR, TYPE2_OUTPUT_DIR,'0052917.pdf')
+    # start(TYPE1_INPUT_DIR, TYPE1_OUTPUT_DIR)
+    start(TYPE2_INPUT_DIR, TYPE2_OUTPUT_DIR,'0055010.pdf')
     # make_excel_file()

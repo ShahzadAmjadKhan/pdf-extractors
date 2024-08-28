@@ -8,5 +8,5 @@ def process_file_via_pypdfium2(pdf_path):
         page = pdf.get_page(page_number)        
         page_text = page.get_textpage()         
         text += page_text.get_text_range()     
-        print(text)
+        # print(text)
         return text

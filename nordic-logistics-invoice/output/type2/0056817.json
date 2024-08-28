@@ -1,0 +1,43 @@
+{
+  "RawInvoices": [
+    {
+      "Invoice No": "354036/1",
+      "Type": "Invoice",
+      "Invoice Date": "2.02.22",
+      "Bill of Lading": "202202037026001",
+      "Customer": "NILLE AS",
+      "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
+      "Customer Number": "10112",
+      "ETD": "28.01.22",
+      "POL": "IN-MUN MUNDRA",
+      "POD": "NO-MSS MOSS",
+      "Total": 223604.75,
+      "VAT": 78.75,
+      "NetValue": 223526.0,
+      "Currency": "NOK",
+      "Reference No.": "A.ref 506831",
+      "Due Date": "3.04.22",
+      "Tour Number": "10/0182623/STH"
+    },
+    {
+      "Invoice No": "354036/2",
+      "Type": "Invoice",
+      "Invoice Date": "2.02.22",
+      "Bill of Lading": "202202222023001",
+      "Customer": "NILLE AS",
+      "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
+      "Customer Number": "10112",
+      "ETD": "25.01.22",
+      "POL": "CN-NPO NINGBO",
+      "POD": "NO-MSS MOSS",
+      "Total": 190064.75,
+      "VAT": 78.75,
+      "NetValue": 189986.0,
+      "Currency": "NOK",
+      "Reference No.": "A.ref KO2100102",
+      "Due Date": "3.04.22",
+      "Tour Number": "10/0184856/STH"
+    }
+  ],
+  "RawInvoiceCharges": []
+}
