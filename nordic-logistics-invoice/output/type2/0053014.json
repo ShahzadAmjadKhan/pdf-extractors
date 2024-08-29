@@ -1,105 +1,124 @@
 {
   "RawInvoices": [
     {
-      "Invoice No": "352723/1",
+      "Invoice No": "351056/1",
       "Type": "Invoice",
-      "Invoice Date": "27.10.21",
-      "Bill of Lading": "202102037287001",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202101073171102",
       "Customer": "NILLE AS",
       "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
       "Customer Number": "10112",
-      "ETD": "18.10.21",
-      "POL": "IN-MUN MUNDRA",
+      "ETD": "19.06.21",
+      "POL": "CN-NPO NINGBO",
       "POD": "NO-MSS MOSS",
-      "Total": 25750.75,
+      "Total": 20794.75,
       "VAT": 78.75,
-      "NetValue": 25672.0,
+      "NetValue": 20716.0,
       "Currency": "NOK",
-      "Reference No.": "A.ref 506659",
-      "Due Date": "26.12.21",
-      "Tour Number": "10/0181604/STH"
+      "Reference No.": "A.ref 505927",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0176587/ALH"
     },
     {
-      "Invoice No": "352723/2",
+      "Invoice No": "351056/2",
       "Type": "Invoice",
-      "Invoice Date": "27.10.21",
-      "Bill of Lading": "202102222282001 OKTOBER",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202101073168101 JUNI",
       "Customer": "NILLE AS",
       "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
       "Customer Number": "10112",
-      "ETD": "11.10.21",
-      "POL": "IN-TUT TUTICORIN",
+      "ETD": "18.06.21",
+      "POL": "PK-KHI KARACHI",
       "POD": "NO-MSS MOSS",
-      "Total": 19954.75,
+      "Total": 23321.75,
       "VAT": 78.75,
-      "NetValue": 19876.0,
+      "NetValue": 23243.0,
       "Currency": "NOK",
-      "Reference No.": "A.ref 506885",
-      "Due Date": "26.12.21",
-      "Tour Number": "10/0182625/STH"
+      "Reference No.": "A.ref 506161",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0177974/ALH"
     },
     {
-      "Invoice No": "352723/3",
+      "Invoice No": "351056/3",
       "Type": "Invoice",
-      "Invoice Date": "27.10.21",
-      "Bill of Lading": "202102037281001",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202101159111001 NILLE TRA",
       "Customer": "NILLE AS",
       "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
       "Customer Number": "10112",
-      "ETD": "11.10.21",
-      "POL": "IN-TUT TUTICORIN",
-      "POD": "NO-MSS MOSS",
-      "Total": 64706.75,
-      "VAT": 78.75,
-      "NetValue": 64628.0,
+      "ETD": "21.04.21",
+      "POL": "CN-XIM XIAMEN",
+      "POD": "NO-OSL OSLO",
+      "Total": 1780.0,
+      "VAT": 0,
+      "NetValue": 1780.0,
       "Currency": "NOK",
-      "Reference No.": "A.ref 506891",
-      "Due Date": "26.12.21",
-      "Tour Number": "10/0182626/STH"
+      "Reference No.": "A.ref 505267-2",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0178346/AMS"
     },
     {
-      "Invoice No": "352723/4",
+      "Invoice No": "351056/4",
       "Type": "Invoice",
-      "Invoice Date": "27.10.21",
-      "Bill of Lading": "202102222285001 OKTOBER",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202102222171001 JUNI",
       "Customer": "NILLE AS",
       "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
       "Customer Number": "10112",
-      "ETD": "13.10.21",
-      "POL": "CN-SGH SHANGHAI",
+      "ETD": "20.06.21",
+      "POL": "CN-NPO NINGBO",
       "POD": "NO-MSS MOSS",
-      "Total": 247124.75,
+      "Total": 23142.75,
       "VAT": 78.75,
-      "NetValue": 247046.0,
+      "NetValue": 23064.0,
       "Currency": "NOK",
-      "Reference No.": "A.ref 506412-4",
-      "Due Date": "26.12.21",
-      "Tour Number": "10/0182886/STH"
+      "Reference No.": "A.ref 505718",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0178451/ALH"
     },
     {
-      "Invoice No": "352723/5",
+      "Invoice No": "351056/5",
       "Type": "Invoice",
-      "Invoice Date": "27.10.21",
-      "Bill of Lading": "202102222285001",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202102222173001",
       "Customer": "NILLE AS",
       "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
       "Customer Number": "10112",
-      "ETD": "13.10.21",
-      "POL": "CN-SGH SHANGHAI",
+      "ETD": "21.06.21",
+      "POL": "CN-NPO NINGBO",
       "POD": "NO-MSS MOSS",
-      "Total": 157109.75,
+      "Total": 146824.75,
       "VAT": 78.75,
-      "NetValue": 157031.0,
+      "NetValue": 146746.0,
       "Currency": "NOK",
-      "Reference No.": "A.ref 506136-3",
-      "Due Date": "26.12.21",
-      "Tour Number": "10/0184934/STH"
+      "Reference No.": "A.ref 506148",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0181023/ALH"
+    },
+    {
+      "Invoice No": "351056/6",
+      "Type": "Invoice",
+      "Invoice Date": "1.07.21",
+      "Bill of Lading": "202101073168101 JUNI",
+      "Customer": "NILLE AS",
+      "Customer Address": "POSTBOKS 530 BEDRIFTSSENTERET,1411 KOLBOTN",
+      "Customer Number": "10112",
+      "ETD": "21.06.21",
+      "POL": "PK-KHI KARACHI",
+      "POD": "NO-MSS MOSS",
+      "Total": 36968.75,
+      "VAT": 78.75,
+      "NetValue": 36890.0,
+      "Currency": "NOK",
+      "Reference No.": "A.ref 506161-2",
+      "Due Date": "30.08.21",
+      "Tour Number": "10/0181960/ALH"
     }
   ],
   "RawInvoiceCharges": [
     {
-      "Invoice": "352723/1",
-      "Charge Type": "FORTOLLING MEDUMW171927",
+      "Invoice": "351056/1",
+      "Charge Type": "FORTOLLING 256395259",
       "Unit Price": 265.0,
       "Currency": "NOK",
       "Exchange Rate": 1.0,
@@ -109,7 +128,7 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/1",
+      "Invoice": "351056/1",
       "Charge Type": "MVA BLANKETT",
       "Unit Price": 50.0,
       "Currency": "NOK",
@@ -120,17 +139,27 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/1",
-      "Charge Type": "SJ\u00d8FR 1X20'DC 21/9",
-      "Unit Price": 2600.0,
+      "Invoice": "351056/1",
+      "Charge Type": "1X40HC 01.05",
+      "Unit Price": 1748.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 23191.0,
+      "Exchange Rate": 8.6021,
+      "Total": 15036.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/1",
+      "Invoice": "351056/1",
+      "Charge Type": "CONSOLIDATION FEE",
+      "Unit Price": 125.0,
+      "Currency": "USD",
+      "Exchange Rate": 8.6021,
+      "Total": 1075.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/1",
       "Charge Type": "THC",
       "Unit Price": 1025.0,
       "Currency": "NOK",
@@ -140,7 +169,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/1",
+      "Invoice": "351056/1",
       "Charge Type": "VARE-/HAVNEAVGIFT",
       "Unit Price": 425.0,
       "Currency": "NOK",
@@ -150,28 +179,28 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/1",
-      "Charge Type": "B/L & DOKUMENTASJON",
-      "Unit Price": 475.0,
+      "Invoice": "351056/1",
+      "Charge Type": "B/L 5X",
+      "Unit Price": 2375.0,
       "Currency": "NOK",
       "Exchange Rate": 1.0,
-      "Total": 475.0,
+      "Total": 2375.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/1",
+      "Invoice": "351056/1",
       "Charge Type": "SECA",
-      "Unit Price": 27.0,
+      "Unit Price": 54.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 241.0,
+      "Exchange Rate": 8.6021,
+      "Total": 465.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/2",
-      "Charge Type": "FORTOLLING 212959415",
+      "Invoice": "351056/2",
+      "Charge Type": "FORTOLLING MEDUPS510444",
       "Unit Price": 265.0,
       "Currency": "NOK",
       "Exchange Rate": 1.0,
@@ -181,7 +210,7 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/2",
+      "Invoice": "351056/2",
       "Charge Type": "MVA BLANKETT",
       "Unit Price": 50.0,
       "Currency": "NOK",
@@ -192,17 +221,17 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/2",
-      "Charge Type": "SJ\u00d8FR 1X20'DC 28/8",
-      "Unit Price": 1950.0,
+      "Invoice": "351056/2",
+      "Charge Type": "1X20DC 05.13",
+      "Unit Price": 2400.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9207,
-      "Total": 17395.0,
+      "Exchange Rate": 8.6538,
+      "Total": 20769.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/2",
+      "Invoice": "351056/2",
       "Charge Type": "THC",
       "Unit Price": 1025.0,
       "Currency": "NOK",
@@ -212,7 +241,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/2",
+      "Invoice": "351056/2",
       "Charge Type": "VARE-/HAVNEAVGIFT",
       "Unit Price": 425.0,
       "Currency": "NOK",
@@ -222,7 +251,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/2",
+      "Invoice": "351056/2",
       "Charge Type": "B/L & DOKUMENTASJON",
       "Unit Price": 475.0,
       "Currency": "NOK",
@@ -232,18 +261,58 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/2",
+      "Invoice": "351056/2",
       "Charge Type": "SECA",
       "Unit Price": 27.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9207,
-      "Total": 241.0,
+      "Exchange Rate": 8.6538,
+      "Total": 234.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/3",
-      "Charge Type": "FORTOLLING MEDUMQ945021",
+      "Invoice": "351056/3",
+      "Charge Type": "BRYGGELEIE 1 DAG 1811X21FFA03103L MSMU7401763",
+      "Unit Price": 440.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 440.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/3",
+      "Charge Type": "BRLEIE 1 DG PR CONT 1811X21FFA03103L TGBU5538313",
+      "Unit Price": 930.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 930.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/3",
+      "Charge Type": "BRLEIE 1 DAG 1811X21FFA03103L FFAU2175802",
+      "Unit Price": 310.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 310.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/3",
+      "Charge Type": "ADMINISTRATION FEE 1811X21FFA03103L",
+      "Unit Price": 100.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 100.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/4",
+      "Charge Type": "FORTOLLING 210138028",
       "Unit Price": 265.0,
       "Currency": "NOK",
       "Exchange Rate": 1.0,
@@ -253,7 +322,7 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/3",
+      "Invoice": "351056/4",
       "Charge Type": "MVA BLANKETT",
       "Unit Price": 50.0,
       "Currency": "NOK",
@@ -264,17 +333,109 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/3",
-      "Charge Type": "SJ\u00d8FR 20'+4H' 28/8",
-      "Unit Price": 6750.0,
+      "Invoice": "351056/4",
+      "Charge Type": "1X45HC 10.05",
+      "Unit Price": 1848.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9207,
-      "Total": 60215.0,
+      "Exchange Rate": 8.6021,
+      "Total": 15897.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/3",
+      "Invoice": "351056/4",
+      "Charge Type": "TILLEGG 45'HC",
+      "Unit Price": 500.0,
+      "Currency": "USD",
+      "Exchange Rate": 8.9247,
+      "Total": 4462.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/4",
+      "Charge Type": "THC",
+      "Unit Price": 1025.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 1025.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/4",
+      "Charge Type": "VARE-/HAVNEAVGIFT",
+      "Unit Price": 425.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 425.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/4",
+      "Charge Type": "B/L & DOKUMENTASJON",
+      "Unit Price": 475.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 475.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/4",
+      "Charge Type": "SECA",
+      "Unit Price": 54.0,
+      "Currency": "USD",
+      "Exchange Rate": 8.6021,
+      "Total": 465.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/5",
+      "Charge Type": "FORTOLLING 143162837071",
+      "Unit Price": 265.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 331.25,
+      "Currency Total": "NOK",
+      "VAT": 66.25,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "351056/5",
+      "Charge Type": "MVA BLANKETT",
+      "Unit Price": 50.0,
+      "Currency": "NOK",
+      "Exchange Rate": 1.0,
+      "Total": 62.5,
+      "Currency Total": "NOK",
+      "VAT": 12.5,
+      "VAT Percentage": "25.0%"
+    },
+    {
+      "Invoice": "351056/5",
+      "Charge Type": "1X40HC 15/05",
+      "Unit Price": 10950.0,
+      "Currency": "USD",
+      "Exchange Rate": 8.6538,
+      "Total": 94759.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/5",
+      "Charge Type": "1X20DC 15/05",
+      "Unit Price": 5500.0,
+      "Currency": "USD",
+      "Exchange Rate": 8.6538,
+      "Total": 47596.0,
+      "Currency Total": "NOK",
+      "VAT": 0.0
+    },
+    {
+      "Invoice": "351056/5",
       "Charge Type": "THC",
       "Unit Price": 2050.0,
       "Currency": "NOK",
@@ -284,7 +445,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/3",
+      "Invoice": "351056/5",
       "Charge Type": "VARE-/HAVNEAVGIFT",
       "Unit Price": 850.0,
       "Currency": "NOK",
@@ -294,7 +455,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/3",
+      "Invoice": "351056/5",
       "Charge Type": "B/L & DOKUMENTASJON",
       "Unit Price": 475.0,
       "Currency": "NOK",
@@ -304,18 +465,18 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/3",
+      "Invoice": "351056/5",
       "Charge Type": "SECA",
       "Unit Price": 81.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9207,
-      "Total": 723.0,
+      "Exchange Rate": 8.6538,
+      "Total": 701.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/4",
-      "Charge Type": "FORTOLLING 142155274491",
+      "Invoice": "351056/6",
+      "Charge Type": "FORTOLLING MEDUPS510451",
       "Unit Price": 265.0,
       "Currency": "NOK",
       "Exchange Rate": 1.0,
@@ -325,7 +486,7 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/4",
+      "Invoice": "351056/6",
       "Charge Type": "MVA BLANKETT",
       "Unit Price": 50.0,
       "Currency": "NOK",
@@ -336,89 +497,17 @@
       "VAT Percentage": "25.0%"
     },
     {
-      "Invoice": "352723/4",
-      "Charge Type": "SJ\u00d8FR 20'+4H' 23/8",
-      "Unit Price": 27250.0,
+      "Invoice": "351056/6",
+      "Charge Type": "1X40HC 13.05",
+      "Unit Price": 3950.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 243059.0,
+      "Exchange Rate": 8.6538,
+      "Total": 34183.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/4",
-      "Charge Type": "THC",
-      "Unit Price": 2050.0,
-      "Currency": "NOK",
-      "Exchange Rate": 1.0,
-      "Total": 2050.0,
-      "Currency Total": "NOK",
-      "VAT": 0.0
-    },
-    {
-      "Invoice": "352723/4",
-      "Charge Type": "VARE-/HAVNEAVGIFT",
-      "Unit Price": 425.0,
-      "Currency": "NOK",
-      "Exchange Rate": 1.0,
-      "Total": 425.0,
-      "Currency Total": "NOK",
-      "VAT": 0.0
-    },
-    {
-      "Invoice": "352723/4",
-      "Charge Type": "B/L & DOKUMENTASJON",
-      "Unit Price": 475.0,
-      "Currency": "NOK",
-      "Exchange Rate": 1.0,
-      "Total": 475.0,
-      "Currency Total": "NOK",
-      "VAT": 0.0
-    },
-    {
-      "Invoice": "352723/4",
-      "Charge Type": "SECA",
-      "Unit Price": 81.0,
-      "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 722.0,
-      "Currency Total": "NOK",
-      "VAT": 0.0
-    },
-    {
-      "Invoice": "352723/5",
-      "Charge Type": "FORTOLLING 142155274513",
-      "Unit Price": 265.0,
-      "Currency": "NOK",
-      "Exchange Rate": 1.0,
-      "Total": 331.25,
-      "Currency Total": "NOK",
-      "VAT": 66.25,
-      "VAT Percentage": "25.0%"
-    },
-    {
-      "Invoice": "352723/5",
-      "Charge Type": "MVA BLANKETT",
-      "Unit Price": 50.0,
-      "Currency": "NOK",
-      "Exchange Rate": 1.0,
-      "Total": 62.5,
-      "Currency Total": "NOK",
-      "VAT": 12.5,
-      "VAT Percentage": "25.0%"
-    },
-    {
-      "Invoice": "352723/5",
-      "Charge Type": "SJ\u00d8FR 1X40'HC 23/8",
-      "Unit Price": 17300.0,
-      "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 154309.0,
-      "Currency Total": "NOK",
-      "VAT": 0.0
-    },
-    {
-      "Invoice": "352723/5",
+      "Invoice": "351056/6",
       "Charge Type": "THC",
       "Unit Price": 1025.0,
       "Currency": "NOK",
@@ -428,7 +517,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/5",
+      "Invoice": "351056/6",
       "Charge Type": "VARE-/HAVNEAVGIFT",
       "Unit Price": 425.0,
       "Currency": "NOK",
@@ -438,7 +527,7 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/5",
+      "Invoice": "351056/6",
       "Charge Type": "B/L & DOKUMENTASJON",
       "Unit Price": 475.0,
       "Currency": "NOK",
@@ -448,12 +537,12 @@
       "VAT": 0.0
     },
     {
-      "Invoice": "352723/5",
+      "Invoice": "351056/6",
       "Charge Type": "SECA",
       "Unit Price": 54.0,
       "Currency": "USD",
-      "Exchange Rate": 8.9196,
-      "Total": 482.0,
+      "Exchange Rate": 8.6538,
+      "Total": 467.0,
       "Currency Total": "NOK",
       "VAT": 0.0
     }

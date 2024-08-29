@@ -1,4 +1,5 @@
 import re
+import collections
 
 class Type2PdfParser:
 
@@ -6,13 +7,12 @@ class Type2PdfParser:
     def parse_order_block_for_invoice(self, invoice_block, block, invoice_base_no, order_index, vat):
         order_data = {}
 
-        reference_no_match = re.search(r"Godsnr\s.*(A.ref\s\d+)", block, re.DOTALL | re.IGNORECASE)
+        reference_no_match = re.search(r"Godsnr\s.*(A.ref\s\w+\d+[-]*\d+)", block, re.DOTALL | re.IGNORECASE)
         reference_no = reference_no_match.group(1) if reference_no_match else None
         reference_no = reference_no.strip('\r')
 
         # Assign the invoice number with order index
         order_data['Invoice No'] = f"{invoice_base_no}/{order_index}"
-
         # Extract Type
         order_data['Type'] = "Invoice"
 
@@ -21,7 +21,7 @@ class Type2PdfParser:
         order_data['Invoice Date'] = invoice_date_match.group(1) if invoice_date_match else None
 
         # Extract Bill of Lading
-        bol_match = re.search(r"Godsnr\s(.*?)\s", block, re.DOTALL | re.IGNORECASE)
+        bol_match = re.search(r"Godsnr\s(.*?)\sA.ref", block, re.DOTALL | re.IGNORECASE)
         order_data['Bill of Lading'] = bol_match.group(1) if bol_match else None
 
         # Use Customer and Customer Address from the invoice block
@@ -110,40 +110,44 @@ class Type2PdfParser:
 
         charges = []
         charge_data = {}
-        currency_match = re.search(r"Total amount without VAT [\d\s,]+ ([A-Z]{3})", block, re.MULTILINE | re.IGNORECASE)
+        currency_match = re.search(r"Oppdragstotal:\s(\w{3})\s", block, re.MULTILINE | re.IGNORECASE)
         total_currency = currency_match.group(1) if currency_match else "NOK"
-        total_value_blocks = re.split(r"Total amount without VAT [\d\s,]+"+total_currency, block, re.MULTILINE | re.IGNORECASE)
-        charges_lines = total_value_blocks[0].splitlines()
-
+        total_value_blocks = re.split(r"Fra-til..:", block, re.MULTILINE | re.IGNORECASE)
+        charges_lines = re.split(r"Fortsetter", total_value_blocks[1], re.MULTILINE | re.IGNORECASE)[0].splitlines()
+        # charges_lines = total_value_blocks[1].splitlines()
+        charges_pattern = r".*?\s\w{3}\s[\d.]*,\d+\s[\d.]*,\d+\s[\d.]*,\d+"
         for index, line in enumerate(charges_lines):
             charge_data['Invoice'] = f"{invoice_base_no}/{order_index}"
             if total_currency is not None:
-                if line.endswith(total_currency) or line.endswith(total_currency + " *"):
-                    charge_type_match = re.match(r"(.*?)\s[\d\s]*\d+,\d+\s"+total_currency, line)
+                line_match = re.match(charges_pattern, line)
+                if line_match is not None:
+                    charge_type_match = re.match(r"(.*?)\s\w{3}\s[\d.]*,\d+\s[\d.]*,\d+\s[\d.]*,\d+", line)
                     charge_type = charge_type_match.group(1) if charge_type_match else None
-                    charge_type = charge_type.rstrip(' ')
-                    if charge_type.endswith("/") and index + 1 <= len(charges_lines):
+                    if index + 1 < len(charges_lines):
                         next_line = charges_lines[index+1]
-                        charge_type = charge_type + " " + next_line
+                        if re.search(r"([\d.]*,\d+)", next_line) is None:
+                            charge_type = charge_type + " " + next_line
 
-                    unit_price_matches = re.findall(r"\s([\d\s]*\d+,\d+)\s"+total_currency, line)
-                    if len(unit_price_matches) == 2:
-                        unit_price = float(unit_price_matches[0].split(' ')[0])
-                        currency = 'USD'
-                        exchange_rate = unit_price_matches[0].split(' ')[1]
-                        exchange_rate = float(exchange_rate.replace(' ', '').replace(',', '.'))
-                        total = unit_price_matches[1] if unit_price_matches[1] else '0.0'
-                        total = float(total.replace(' ', '').replace(',', '.'))
-                    else:
-                        unit_price = unit_price_matches[0] if unit_price_matches[0] else 0.0
-                        unit_price = float(unit_price.replace(' ', '').replace(',', '.'))
-                        exchange_rate = 1.0000
-                        currency = total_currency
-                        total = unit_price
+                    unit_price_match = re.match(r".*?\s\w{3}\s([\d.]*,\d+)\s[\d.]*,\d+\s[\d.]*,\d+", line)
+                    unit_price = unit_price_match.group(1) if unit_price_match else ''
+                    unit_price = float(unit_price.replace('.', '').replace(',', '.'))
 
-                    vat_match = re.search(r"\s+([\d\s,]+) \w{3} \*", line)
-                    vat_amount = float(vat_match.group(1).replace(" ", "").replace(",", ".")) if vat_match else 0.0
-                    final_vat = vat_amount * vat_percentage
+                    currency_match = re.match(r".*?\s(\w{3})\s[\d.]*,\d+\s[\d.]*,\d+\s[\d.]*,\d+", line)
+                    currency = currency_match.group(1) if currency_match else ''
+
+                    exchange_rate_match = re.match(r".*?\s\w{3}\s[\d.]*,\d+\s([\d.]*,\d+)\s[\d.]*,\d+", line)
+                    exchange_rate = exchange_rate_match.group(1) if exchange_rate_match else ''
+                    exchange_rate = float(exchange_rate.replace('.', '').replace(',', '.'))
+                    if exchange_rate == 100.0:
+                        exchange_rate = 1.0
+
+                    total_match = re.match(r".*?\s\w{3}\s[\d.]*,\d+\s[\d.]*,\d+\s([\d.]*,\d+)", line)
+                    total = total_match.group(1) if total_match else ''
+                    total = float(total.replace('.', '').replace(',', '.'))
+                    final_vat = 0.0
+                    if charge_type.upper().__contains__("FORTOLLING") or \
+                            charge_type.upper().__contains__("MVA BLANKETT"):
+                        final_vat = unit_price * vat_percentage
 
                     charge_data['Charge Type'] = charge_type.strip(' ')
                     charge_data['Unit Price'] = unit_price
@@ -152,7 +156,7 @@ class Type2PdfParser:
                     charge_data['Total'] = total + final_vat
                     charge_data['Currency Total'] = 'NOK'
                     charge_data['VAT'] = final_vat
-                    if vat_amount > 0.0:
+                    if final_vat > 0.0:
                         charge_data['VAT Percentage'] = str(vat_percentage * 100) + '%'
                     charges.append(charge_data)
                     charge_data = {}
@@ -169,7 +173,7 @@ class Type2PdfParser:
     # Function to parse the invoice data
     def parse_invoice_data(self, text):
         invoices = []
-        charges = []
+        charges_map = {}
         vat = self.get_vat(text)
         invoice_base_no_match = re.search(r"Fakturanr\s(\d+)", text, re.MULTILINE | re.IGNORECASE)
         invoice_base_no = invoice_base_no_match.group(1) if invoice_base_no_match else ''
@@ -180,10 +184,18 @@ class Type2PdfParser:
             if order_block.__contains__("Oppdragstotal:"):
                 invoice_data = self.parse_order_block_for_invoice(order_blocks[0], "Avsender:" + order_block, invoice_base_no, order_index, vat)
                 invoices.append(invoice_data)
+
+            charge_data = self.parse_order_block_for_charges(order_block, invoice_base_no, order_index, vat)
+            if len(charge_data) > 0:
+                if charge_data[0]['Invoice'] in charges_map:
+                    charges_map[charge_data[0]['Invoice']].extend(charge_data)
+                else:
+                    charges_map[charge_data[0]['Invoice']]= charge_data
+
+            if order_block.__contains__("Oppdragstotal:"):
                 order_index += 1
 
-                # charge_data = self.parse_order_block_for_charges(order_block, invoice_base_no, order_index, vat)
-                # charges.extend(charge_data)
+        charges = [item for sublist in charges_map.values() for item in sublist]
 
         output_data = {
             "RawInvoices": invoices,

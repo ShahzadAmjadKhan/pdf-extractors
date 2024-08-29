@@ -4,7 +4,10 @@ import logging
 import json
 import base64
 import io
+import re
+import pypdfium2 as pdfium
 from pdf_parser_type1 import Type1PdfParser
+from pdf_parser_type2 import Type2PdfParser
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
@@ -43,7 +46,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     input_stream = io.BytesIO(pdf_data)
     output_data = "text here"
     try:
-        output_data = parse_pdf_via_plumber(input_stream, pdf_data)
+        output_data = parse_pdf(input_stream, pdf_data)
 
     except Exception as e:
         print(f"An error occurred while reading the PDF: {e}")
@@ -74,19 +77,42 @@ def parse_pdf_via_plumber_and_use_words(input_stream, pdf_data_base64):
 
     return text
 
-def parse_pdf_via_plumber(input_stream, pdf_data_base64):
-    text = ""
 
+def parse_pdf(input_stream, pdf_data_base64):
+    text = ""
+    output_data = ""
     with pdfplumber.open(input_stream) as pdf:
         # Iterate through the pages and extract text
         for page_number, page in enumerate(pdf.pages):
             text += page.extract_text()
-    # print(text)
 
-    pdf_parser = Type1PdfParser()
+    pdf_parser = get_pdf_parser(text)
 
-    word_text = parse_pdf_via_plumber_and_use_words(input_stream, pdf_data_base64)
-    output_data = pdf_parser.parse_invoice_data(text,  word_text)
+    if type(pdf_parser) is Type1PdfParser:
+        word_text = parse_pdf_via_plumber_and_use_words(input_stream, pdf_data_base64)
+        output_data = pdf_parser.parse_invoice_data(text,  word_text)
+    elif type(pdf_parser) is Type2PdfParser:
+        text = parse_file_via_pypdfium2(pdf_data_base64)
+        output_data = pdf_parser.parse_invoice_data(text)
+
     return output_data
 
 
+def parse_file_via_pypdfium2(pdf_data_base64):
+    pdf = pdfium.PdfDocument(pdf_data_base64)
+    text = ""
+    for page_number in range(len(pdf)):
+        page = pdf.get_page(page_number)
+        page_text = page.get_textpage()
+        text += page_text.get_text_range()
+        # print(text)
+    return text
+
+
+def get_pdf_parser(text):
+    # Split the text into invoice blocks using the "Invoice \d+ from dd.dd.dddd" pattern
+    invoice_blocks = re.split(r"Invoice (\d+) from \d{2}\.\d{2}\.\d{4}", text, re.IGNORECASE)
+    if invoice_blocks and len(invoice_blocks) > 1:
+        return Type1PdfParser()
+    else:
+        return Type2PdfParser()
